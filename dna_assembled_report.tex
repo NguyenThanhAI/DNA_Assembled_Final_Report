@@ -195,7 +195,7 @@
     \newpage
     \section{Mở đầu}
     
-    Trong những năm gần đây, các nhà khoa học và các nhà nghiên cứu đã tập trung vào giải trình tự DNA và lắp ráp các đoạn với hy vọng nâng cao khả năng để tái tạo lại toàn bộ chuỗi DNA dựa trên các mảnh dữ liệu mà họ có thể thu được.
+    Trong những năm gần đây, các nhà khoa học và các nhà nghiên cứu đã tập trung vào giải trình tự và lắp ráp các đoạn DNA với hy vọng nâng cao khả năng để tái tạo lại toàn bộ chuỗi DNA dựa trên các mảnh dữ liệu mà họ có thể thu được.
     Phức tạp nảy sinh khi lắp ráp các đoạn nhỏ do dữ liệu không hoàn hảo.
     Các sợi thường được lặp lại nhiều lần với nhiều độ dài khác nhau.
     Kết quả là, cấu hình của bộ gen ban đầu không hề dễ dàng như việc ghép mảnh này vào mảnh ghép tiếp theo.
@@ -207,7 +207,7 @@
     Bài báo này sẽ cung cấp một số thông tin cơ bản sơ bộ từ lý thuyết đồ thị.
     Ngoài một số định nghĩa, ta sẽ chứng minh hai định lý, định lý BEST và định lý cây ma trận, cả hai đều được sử dụng trong việc đếm số chu trình Euler trong đồ thị có hướng.
 
-    Hơn nữa, bài báo sẽ khảo sát ngắn gọn tình hình nghiên cứu của bài toán giải trình tự DNA và lắp ráp các đoạn DNA,
+    Hơn nữa, bài báo sẽ khảo sát ngắn gọn tình hình nghiên cứu của bài toán giải trình tự và lắp ráp các đoạn DNA,
     chẳng hạn các vấn đề phát sinh và cách chúng được giải quyết bằng lý thuyết đồ thị.
     Ta sẽ xem cách các đồ thị được xây dựng sử dụng dữ liệu DNA và cách mà các đồ thị này biểu diễn bài toán.
     Vấn đề chính mà ta quan tâm là bài toán đường đi Euler trong \cite{pevzner2001eulerian}, \cite{pevzner2001new}, đây là một nỗ lực gần đây để đơn giản hóa đồ thị DNA thông qua một chuỗi các phép biến đổi trên đồ thị.
@@ -248,6 +248,27 @@
         \label{fig:1}
     \end{figure}
 
+    Ví dụ, ta xây dựng một đồ thị de Bruijin cho chuỗi "0110101" sử dụng các đoạn có độ dài $l=3$.
+    Bốn bộ ba có mặt trong chuỗi là 011, 110, 101 (xuất hiện hai lần) và 010.
+    Hình \ref{fig:1} cho thấy đồ thị de Bruijin trùng với chuỗi này.
+    Ta cần lưu ý rằng các đỉnh đại diện cho chuỗi con đầu tiên và cuối cùng có độ dài là 2 trong mỗi bộ ba, và cạnh có hướng giữa hai đỉnh đại diện cho bộ ba tương ứng.
+
+    \section{Giải trình tự và lắp ráp các đoạn DNA}
+
+    Để đơn giản, ta xem giải trình tự chuỗi DNA giống như là quá trình xây dựng trò chơi xếp hình của trẻ em như được thể hiện trong \cite{pevzner2001eulerian}.
+    Điểm khác biệt ở chỗ các nhà khoa học đang phải xử lý hàng trăm mảnh có kích thước khác nhau và một số mảnh giống hệt nhau.
+    Các "mảnh ghép" là các chuỗi DNA khác nhau đọc được và hình được xếp hoàn chỉnh là toàn bộ chuỗi ban đầu hoặc bộ gen trông như thế nào.
+    Thông tin được cung cấp về khía cạnh này của tin sinh học đến từ các phần khác nhau của công trình \cite{jones2004introduction}.
+
+    Cụ thể, lắp ráp các đoạn DNA là một kỹ thuật trong phòng thí nghiệm xác định cấu hình củ toàn bộ bộ gen dựa trên một loạt các chuỗi được đọc từ bộ gen đó.
+    Vì một chuỗi DNA đầy đủ bao gồm hàng triệu nucleotide nên không có cách nào để nắm được toàn bộ cấu trúc một cách rõ ràng.
+    Với công nghệ ngày nay, các nhà khoa học và các nhà nghiên cứu đã có thể thu được các đoạn DNA có độ dài từ 500 đến 1200 nucleotide.
+    Tất cả các đoạn này bao gồm bốn loại ba-zơ tạo nên DNA: Adenine (A), Thymine (T), Guanine (G) và Cystosine (C).
+    Có thể có nhiều cách để tái tạo lại chuỗi ban đầu từ các mảnh DNA nhưng chỉ có một trong số đó là đúng.
+
+    Có rất nhiều vấn đề và sự phức tạp phát sinh trong quá trình lắp ráp các đoạn khiến cho việc này khó hơn rất nhiều so với việc chỉ đơn giản là xây dựng một hình xếp.
+    Trong phần miêu tả các đoạn đọc được tồn tại một tỷ lệ sai lệch do máy giải trình tự tạo ra.
+    Tỷ lệ sai này khoảng 1 \% đến 3 \% của DNA do máy giải trình tự tạo ra có chứa lỗi v
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
