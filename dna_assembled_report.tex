@@ -267,8 +267,31 @@
     Có thể có nhiều cách để tái tạo lại chuỗi ban đầu từ các mảnh DNA nhưng chỉ có một trong số đó là đúng.
 
     Có rất nhiều vấn đề và sự phức tạp phát sinh trong quá trình lắp ráp các đoạn khiến cho việc này khó hơn rất nhiều so với việc chỉ đơn giản là xây dựng một hình xếp.
-    Trong phần miêu tả các đoạn đọc được tồn tại một tỷ lệ sai lệch do máy giải trình tự tạo ra.
-    Tỷ lệ sai này khoảng 1 \% đến 3 \% của DNA do máy giải trình tự tạo ra có chứa lỗi v
+    Trong phần miêu tả các đoạn đọc được tồn tại một tỷ lệ lỗi do máy giải trình tự tạo ra.
+    Tỷ lệ sai này khoảng 1 \% đến 3 \% của DNA do máy giải trình tự tạo ra có chứa lỗi và không đại diện một cách thích hợp cho một phần của chuỗi đầy đủ.
+
+    Một vấn đề nữa là chuỗi DNA có cấu trúc xoắn kép.
+    Dựa theo công trình \cite{watson2003molecular}, ta biết rằng với mỗi chuỗi đơn DNA tồn tại một chuỗi bổ sung, A khớp với T, C khớp với G.
+    Vì vây, khi nhìn vào các đoạn đọc được từ một chuỗi DNA, ta không thể xác định được liệu đoạn này đến từ chuỗi mong muốn hay đến từ chuỗi bổ sung.
+
+    Mặc dù tỷ lệ lỗi và việc không biết được đoạn DNA đến từ chuỗi quan tâm hay chuỗi bổ sung cản trở một số bước trong quá trình giải trình tự và lắp ráp các đoạn DAN, nhưng điều ta quan tâm và dễ nhầm lẫn hơn cả đến từ các chuỗi được lặp đi lặp lại.
+    Bộ gen người có một lượng lớn các chuỗi lặp đi lặp lại nhiều lần.
+    Hơn nữa, nếu một chuỗi lặp lại có độ dài lớn hơn độ dài đoạn có thể đọc được thì việc xây dựng lại bộ gen gần như là không thể.
+    Ví dụ, ta xét một bộ gen cụ thể có chuỗi lặp lại có độ dài 2000 nucleotide.
+    Ngày nay không có một máy giải trình tự nào có thể đọc được một đoạn DNA co độ dài như vậy, vì vậy không có cách nào để đọc toàn bộ đoạn lặp lại.
+
+    Hầu hết các nỗ lực sửa lỗi trong lắp ráp các mảnh DNA nhằm khắc phục vấn đề lặp lại của các chuỗi.
+    Các cách tiếp cận trước đây thường theo thuật toán "overlap-layout-concensus".
+    Bước đầu tiên liên quan đến việc khớp tất cả các đoạn đọc được và tìm các khoảng chồng lấn.
+    Điều này được thực hiện bằng cách nhìn vào chuỗi bắt đầu của một đoạn đọc được và chuỗi kết thúc của một đoạn đọc được khác.
+    Bước bố cục là xây dựng các chuỗi và đây là việc khó khăn nhất.
+    Ta ghi nhớ các chuỗi lặp lại, một nỗ lực được thực hiện để tìm thứ tự của các đoạn đọc được dọc theo một chuỗi DNA đầy đủ và xếp chúng lại với nhau.
+    Thành phần cuối cùng của thuật toán này là tìm ra cách các chuỗi sẽ xuất hiện dựa trên bố cục tạo ra ở bước trước.
+    Cách tiếp cận ta sẽ thảo luận trong bài báo này bỏ qua phác thảo của quá trình ba bước ở trên và khi làm vậy, bài toán trở thành bài toán mang tính xác suất.
+    
+    \section{So sánh chuỗi DNA với đồ thị de Bruijin}
+
+    
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
