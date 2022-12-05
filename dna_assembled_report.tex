@@ -186,6 +186,50 @@
     \end{center}
     \addcontentsline{toc}{section}{{\bf LỜI MỞ ĐẦU}\rm}
 
+    Được xây dựng dựa trên các công trình trước đây về giải trình tự bằng lai ghép, lắp ráp các mảnh là một phương pháp mới được khám phá để xác định xem một chuỗi DNA được lắp ráp lại có khớp với chuỗi DNA ban đầu hay không.
+    Một cách cụ thể để phân tích phương pháp này là sử dụng các khái niệm từ lý thuyết đồ thị.
+    Bằng cách xây dựng các mô hình dữ liệu dựa trên những ý tưởng này, có thể đưa ra nhiều kết luận khác nhau về vấn đề ban đầu liên quan đến các chuỗi DNA được lắp ráp lại.
+    Trong bài báo này ta sẽ trình bày chi tiết cách tiếp cận này để lắp ráp đoạn DNA và trình bày một số chứng minh lý thuyết trong quá trình lắp ráp bao gồm cả định lý BEST.
+    Mặt khác, ta sẽ khám phá bài toán đường đi Euler và vai trò của nó trong việc hỗ trợ lắp ráp các đoạn DNA, và các ứng dụng khác gần đây của lý thuyết đồ thị trong lĩnh vực tin sinh học.
+
+    \newpage
+    \section{Mở đầu}
+    
+    Trong những năm gần đây, các nhà khoa học và các nhà nghiên cứu đã tập trung vào giải trình tự DNA và lắp ráp các đoạn với hy vọng nâng cao khả năng để tái tạo lại toàn bộ chuỗi DNA dựa trên các mảnh dữ liệu mà họ có thể thu được.
+    Phức tạp nảy sinh khi lắp ráp các đoạn nhỏ do dữ liệu không hoàn hảo.
+    Các sợi thường được lặp lại nhiều lần với nhiều độ dài khác nhau.
+    Kết quả là, cấu hình của bộ gen ban đầu không hề dễ dàng như việc ghép mảnh này vào mảnh ghép tiếp theo.
+
+    Ta sẽ thảo luận về các cách tiếp cận mới được khám phá gần đây để lắp ráp các đoạn DNA sử dụng các thành phần từ lý thuyết đồ thị,
+    bao gồm đồ thị de Brujin và chu trình Euler để khắc phục các sai lệch trong quá trình lắp ráp các đoạn DNA.
+    Cụ thể, cách tiếp cận này bắt nguồn từ các công trình giải trình tự bằng lai ghép, bao gồm xây dựng các đồ thị có hướng dựa trên dữ liệu DNA được cung cấp và đếm số chu trình Euler trong các đồ thị này.
+
+    Bài báo này sẽ cung cấp một số thông tin cơ bản sơ bộ từ lý thuyết đồ thị.
+    Ngoài một số định nghĩa, ta sẽ chứng minh hai định lý, định lý BEST và định lý cây ma trận, cả hai đều được sử dụng trong việc đếm số chu trình Euler trong đồ thị có hướng.
+
+    Hơn nữa, bài báo sẽ khảo sát ngắn gọn tình hình nghiên cứu của bài toán giải trình tự DNA và lắp ráp các đoạn DNA,
+    chẳng hạn các vấn đề phát sinh và cách chúng được giải quyết bằng lý thuyết đồ thị.
+    Ta sẽ xem cách các đồ thị được xây dựng sử dụng dữ liệu DNA và cách mà các đồ thị này biểu diễn bài toán.
+    Vấn đề chính mà ta quan tâm là bài toán đường đi Euler trong \cite{pevzner2001eulerian}, \cite{pevzner2001new}, đây là một nỗ lực gần đây để đơn giản hóa đồ thị DNA thông qua một chuỗi các phép biến đổi trên đồ thị.
+    Các phép biến đổi như vậy bao gồm các phép tách cạnh khác nhau cho các trường hợp có một và nhiều cạnh trong đồ thị Euler có hướng.
+
+    Phần kết luận thảo luận sự phân tích của trình tự DNA với nanopores, như được trình bày chi tiết trong \cite{bokhari2005parallel} và vai trò của lý thuyết độ thị trong việc giải quyết các vấn đề nảy sinh.
+    Đây là một ứng dụng gần đây hơn của lý thuyết đồ thị được đưa vào sử dụng trong lĩnh vực tinh sinh học.
+    
+    \section{Các định nghĩa trong lý thuyết đồ thị}
+
+    Lý thuyết đồ thị là một lĩnh vực của toán học có nhiều ứng dụng trong thế giới khoa học.
+    Ta giả định người đọc đã quen thuộc với những nền tảng cơ bản của lý thuyết đồ thị, chẳng hạn như được đề cập trong \cite{tucker2006applied} và \cite{west2001introduction}.
+    Các thuật ngữ cơ bản trong bài báo theo các thuật ngữ của \cite{west2001introduction}.
+
+    Ta có thẻ di chuyển qua các phần tử của đồ thị theo nhiều cách khác nhau.
+    Một đường đi là một hành trình bất kỳ qua một đồ thị tạo ra một danh sách các đỉnh và các cạnh sao cho một cạnh kết nối các đỉnh ở hai bên của cạnh này.
+    Một vết là một đường đi mà không có bất kỳ cạnh nào được lặp lại.
+    Một vết khép kín là một chu trình và danh sách các đỉnh được biểu diễn theo thứ tự tuần hoàn.
+    Hơn nữa, một đường dẫn là một vết mà trong đó không có đỉnh nào được lặp lại sao cho các đỉnh có thể được liệt kê theo thứ tự liên tiếp từ đỉnh này liền kề với đỉnh tiếp theo.
+    Trong trường hợp đồ thị có hướng, các cạnh của một vết hoặc một chu trình phải nhất quán về hướng.
+    
+
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 
