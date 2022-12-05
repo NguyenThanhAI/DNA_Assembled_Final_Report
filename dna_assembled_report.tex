@@ -101,7 +101,7 @@
         %----------------------------------------------------------------------------------------
 
         \HRule \\[0.4cm]
-        { \huge \bfseries Bài tập môn học}\\[0.4cm] % Title of your document
+        { \huge \bfseries BÁO CÁO CUỐI KỲ}\\[0.4cm] % Title of your document
         \HRule \\[1.5cm]
 
         \textsc{\Large Môn học: Toán rời rạc và thuật toán}\\[1cm] % Minor heading such as course title
@@ -201,7 +201,7 @@
     Kết quả là, cấu hình của bộ gen ban đầu không hề dễ dàng như việc ghép mảnh này vào mảnh ghép tiếp theo.
 
     Ta sẽ thảo luận về các cách tiếp cận mới được khám phá gần đây để lắp ráp các đoạn DNA sử dụng các thành phần từ lý thuyết đồ thị,
-    bao gồm đồ thị de Brujin và chu trình Euler để khắc phục các sai lệch trong quá trình lắp ráp các đoạn DNA.
+    bao gồm đồ thị de Bruijin và chu trình Euler để khắc phục các sai lệch trong quá trình lắp ráp các đoạn DNA.
     Cụ thể, cách tiếp cận này bắt nguồn từ các công trình giải trình tự bằng lai ghép, bao gồm xây dựng các đồ thị có hướng dựa trên dữ liệu DNA được cung cấp và đếm số chu trình Euler trong các đồ thị này.
 
     Bài báo này sẽ cung cấp một số thông tin cơ bản sơ bộ từ lý thuyết đồ thị.
@@ -228,7 +228,26 @@
     Một vết khép kín là một chu trình và danh sách các đỉnh được biểu diễn theo thứ tự tuần hoàn.
     Hơn nữa, một đường dẫn là một vết mà trong đó không có đỉnh nào được lặp lại sao cho các đỉnh có thể được liệt kê theo thứ tự liên tiếp từ đỉnh này liền kề với đỉnh tiếp theo.
     Trong trường hợp đồ thị có hướng, các cạnh của một vết hoặc một chu trình phải nhất quán về hướng.
-    
+
+    Một vết hoặc một chu trình đi qua các cạnh trong đồ thị một lần và chính xác một lần được gọi là Euler.
+    Các vết hoặc các chu trình Euler được cho phép đi qua các đỉnh trong đồ thị nhiều hơn một lần.
+    Số chu trình Euler trong đồ thị có thể được tính toán với công thức từ định lý BEST, định lý này sẽ được chứng minh ở phần sau trong bài báo.
+
+    Một định nghĩa cuối cùng từ lĩnh vực lý thuyết đồ thị mà ta sử dụng trong bài báo là đồ thị de Bruijin.
+    Đồ thị de Bruijin là một đồ thị có hướng với các đỉnh biểu diễn các chuỗi ký tự từ bảng chữ cái và các cạnh cho biết vị trí mà chuỗi có thể chồng lên nhau như được định nghĩa trong \cite{de1946combinatorial}.
+
+    Việc xây dựng đồ thị này phụ thuộc vào một tập các mảnh hoặc các đoạn có độ dài $l$ từ dãy cụ thể hiện có.
+    Mỗi đỉnh được gán nhãn bởi một đoạn có chiều dài $l-1$ và cạnh có hướng tồn tại giữa hai đỉnh đại diện cho một trong đoạn có chiều dài $l$.
+    Cụ thể, ký hiệu đầu tiên trong đoạn xuất phát từ đỉnh gửi cạnh và tương tự, ký tự cuối cùng biểu diễn đỉnh nhận.
+    Vì vậy, các ký tự còn lại trong cả hai đỉnh bao gồm sẽ đánh dấu các cạnh.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.4\textwidth]{1.png}
+        \caption{Một đồ thị de Bruijin cho chuỗi "0110101" với các đoạn chiều dài là 3.}
+        \label{fig:1}
+    \end{figure}
+
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
