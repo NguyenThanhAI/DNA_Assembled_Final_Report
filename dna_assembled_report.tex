@@ -291,7 +291,57 @@
     
     \section{So sánh chuỗi DNA với đồ thị de Bruijin}
 
-    
+    Giải trình tự bằng lai ghép là một kỹ thuật trong phòng thí nghiệm gần giống như nhìn vào các đoạn của DNA,
+    được gọi là mảng DNA, nhưng không nên nhầm lẫn với lắp ráp các đoạn DNA, vì chúng khác nhau.
+    Cụ thể, giải trình tự bằng lai ghép (SBD) chủ yêu dựa vào sự liên kết của một đoạn DNA mục tiêu chưa biết với một dãy các đoạn tổng hợp ngắn hơn gọi là đầu dò.
+    Các đầu dò này có dộ dài khoảng từ 8 đến 30 nucleotide và chúng liên kết với mục tiêu dựa trên phần bổ sung Watson-Crick được đề cập trong \cite{de1946combinatorial}.
+
+    Tuy nhiên, chính cách tiếp cận lý thuyết đồ thị sử dụng SBH \cite{idury1995new} đã đề xuất cách tiếp cận tương tự trong lĩnh vực lắp ráp các đoạn DNA.
+    Trong bài báo của mình, các tác giả đã định nghĩa các quy tắc để xây dựng một đồ thị có hướng dựa trên các đoạn DNA.
+    Cụ thể hơn, các quy tắc này là để xây dựng một đồ thị de Bruijin dựa trên các đoạn DNA có độ dài $k$.
+    Đồ thị có các định được gán nhãn bằng một đoạn có độ dài là $k-1$, các cạnh được gán nhãn bằng đoạn có độ dài $k$, kết nối hai đỉnh kề trong chuỗi.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{2.png}
+        \caption{Một đồ thị de Bruijin cho chuỗi ATGTGCCGCA.}
+        \label{fig:2}
+    \end{figure}
+
+    Hình \ref{fig:2} min họa một đồ thị de Bruijin cho một chuỗi đơn giản ATGTGCCGCA, chuỗi này đã được sử dụng bởi \cite{idury1995new}.
+    Ở đây, các đoạn DNA đọc được có độ dài là 3.
+    Vì vậy, các đỉnh được đánh dấu bằng các đoạn có độ dài là 2 và các cạnh được đánh dấu bằng các đoạn có độ dài là 3, biểu diễn cho các bộ ba thu được từ chuỗi ban đầu.
+    Ta cần chú ý rằng trong đồ thị trên chỉ có duy nhất một vết Euler vì đây chỉ là một trường hợp đơn giản.
+    Nhiều công trình \cite{pevzner2000computational}, \cite{pevzner1995dna} đã phát triển thêm ý tưởng này.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{3.png}
+        \caption{Một đồ thị được xây dựng từ tập các đoạn đọc được $S$}
+        \label{fig:3}
+    \end{figure}
+
+    Bây giờ, ta sẽ xây dựng một đồ thị de Bruijin khác bằng cách sử dụng các quy tắc tương tự như trên.
+    Với tập hợp các đoạn $S = \lbrace ATG, TGG, TGC, GTG, GGC, GCA, GCG, CGT \rbrace$,
+    đồ thị sẽ có các đỉnh được gán nhãn bởi các đoạn có độ dài là 2 và các cạnh được gán nhãn bởi các đoạn có độ dài là 3.
+    Tuy nhiên, đồ thị được tạo ra cho tập hợp các đoạn đọc được này phức tạp hơn đồ thị trước đó.
+    Cụ thể, có hai vết khép kín khác nhau cho toàn bộ đồ thị, tạo ra các chuỗi ATGGCGTGCA và ATGCGTGGCA.
+    Ở hình \ref{fig:3}, ta lưu ý rằng cạnh nét được phụ được thêm vào để kết nối đỉnh đầu tiên và đỉnh cuối cùng AT và CA tạo thành một đồ thị có hướng Euler.
+
+    Như đã được đề cập ở trên, phương pháp tiếp cận lắp ráp các đoạn DNA này được một số nà nghiên cứu gọi là phương pháp đường đi Euler, tạo ra một bài toán về xác suất.
+    Với ví dụ trên, ta thấy với tập hợp mảnh đã cho ta có thể xây dựng hai chuỗi khác nhau dựa trên việc có hai chu trình Euler khác nhau.
+    Vì vậy, xác suất là 1/2 ta sẽ thu được bộ gen đúng với thực tế tùy thuộc vào chu trình Euler mà ta tìm ra.
+    Vì ta đã thêm một cạnh ảo bổ sung làm cho đồ thị khép kín, nên ta có thể đếm số chu trình Euler thay vì vết.
+
+    Tổng quát hơn, khi ta được cung cấp dữ liệu đầy đủ và không có lỗi, ta có thể thấy rằng xác suất tái tạo lại chuỗi DNA ban đầu với một tập hợp các đoạn là:
+
+    \begin{equation}
+        \dfrac{1}{\text{tổng số chu trình/đường đi Euler trong đồ thị de Bruijin}}
+    \end{equation}
+
+    Cùng với đó, có một định lý được dùng để đếm số chu trình Euler trong đồ thị có hướng, được gọi là định lý BEST và ta sẽ chứng minh, tiếp theo là một định lý liên quan khác và chứng minh của định lý này.
+
+    \section{Định lý BEST}
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
