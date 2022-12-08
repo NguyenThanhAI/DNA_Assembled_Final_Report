@@ -343,6 +343,50 @@
 
     \section{Định lý BEST}
 
+    Tồn tại một công thức tính số chu trình Euler trong đồ thị có hướng.
+    Được đặt tên theo những người tìm ra là de Bruijin, van Aardenne-Ehrenfest, Smith và Tutte \cite{van1951circuits}, \cite{tutte1941unicursal}.
+    Định lý BEST được phát biểu như sau:
+
+    \begin{dl}
+        Cho một đồ thị có hướng liên thông $G$ và tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ tất cả đều có bậc chắn, số chu trình Euler là $\lvert s(G) \rvert$ được tính theo công thức sau, với $\lvert t_i (G) \rvert$ là số cây khung hướng đến gốc là một đỉnh $v_i$ bất kỳ trong $G$:
+
+        \begin{equation*}
+            \lvert s(G) \rvert = \lvert t_i (G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!
+        \end{equation*}
+    \end{dl}
+
+    Chứng minh của định lý này được trình bày trong \cite{bollobas1998graduate}.
+
+    \textbf{Chứng minh:}
+    Ta được cho một đa đồ thị có hướng $G$ với tập đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ và bậc ra và bậc vào của một đỉnh $v_i$ bằng nhau, ký hiệu là $d^+ (v_i) = d^- (v_i)$.
+    Nếu điều kiện trên thỏa mãn, ta biết rằng đồ thị $G$ có ít nhất một chu trình có hướng Euler theo một định lý trong \cite{bollobas1998graduate}.
+
+    Mặt khác, ta đặt $E$ là tập của các chu trình Euler có hướng và $E_i$ là tập các vết Euler có hướng bắt đầu và kết thúc với đỉnh $v_i$.
+    Số lần mà từng chu trình Euler đi qua đỉnh $v_i$ tương đương với bậc vào (hoặc bậc ra) của $v_i$, vì vậy số vết Euler bắt đầu với đỉnh $v_i$ có thể được tính theo công thức:
+
+    \begin{equation}
+        \lvert E_i \rvert = d^+ (v_i) \lvert E \rvert = d^- (v_i) \lvert E \rvert
+    \end{equation}
+
+    Công thức trên cho biết số vết Euler bắt đầu và kết thúc với $v_i$ tương đương với bậc vào hoặc bậc ra của $v_i$ nhân với tổng số chu trình Euler trong đồ thị $G$.
+
+    Ta đặt $T_i$ là tập các cây khung hướng đến $v_i$ và sử dụng tập này trong hàm ánh xạ $f_i: E_i \rightarrow T_i$.
+    Ánh xạ này có đầu vào là tập các vết Euler bất đầu và kết thúc với $v_i$ trong đồ thị $G$ và đầu ra là tập các cây khung hướng đến $v_i$ trong đồ thị $G$.
+    Để các ký hiệu đơn giản trong chứng minh, ta sẽ sử dụng $i=1$ nên $f_1: E_1 \rightarrow T_1$.
+
+    Cho $S$ là một vết Euler từ tập $E_1$, ánh xạ này xây dựng một tập các cạnh $e_j$ theo cách sau.
+    Cạnh đầu tiên trong $S$ thoát ra khỏi $v_1$ không được vẽ, nghĩa là $j=2,\dots, n$ cho mỗi cạnh $e_j$.
+    Hơn nữa, mỗi cạnh $e_j$ xuất hiện khi $S$ đi qua một đình $v_j$ lần cuối và không quay lại đỉnh này lần nữa trên vết Euler.
+    Kết quả từ ánh xạ này là một cây có hướng $T$ với các đỉnh $v_1, \dots, v_n$ và tập $e_2, \dots, e_n$ nằm trong tập các cây khung hướng đến đỉnh $v_1$.
+    Hình \ref{fig:3} cho thấy một ví dụ của ánh xạ dựa trên chu trình Euler xác định trong $G$.
+
+    Ta sẽ chứng minh $T \in T_1$, ta phải chứng minh hai điều:
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $T$ thực sự là một cây
+        \item $T$ hướng đến đỉnh $v_1$.
+    \end{enumerate}
+
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 
