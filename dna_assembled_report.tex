@@ -387,6 +387,107 @@
         \item $T$ hướng đến đỉnh $v_1$.
     \end{enumerate}
 
+    Để chứng minh a) đầu tiên ta giả sử rằng $T$ chứa một chu trình $C$, chu trình này không chứ $v_1$.
+    Vì $C$ là một chu trình, từng đỉnh trong $C$ có bậc ra là 1.
+    Giả định cạnh $e_g$ là cạnh cuối của vết Euler $S$ trong chu trình $C$ kết nối đỉnh $v_g$ và $v_h$.
+    Nếu trong trường hợp này $S$ quay lại $v_h$ mặc dù đã rời đỉnh này lần cuối sau khi đi qua đỉnh $e_h$ trước đó.
+    Điều này mẫu thuẫn với ánh xạ tương ứng, phát biểu rằng một cạnh $e_j$ theo sau đi qua lần cuối đỉnh $v_j$ sẽ không quay lại đỉnh $v_j$ một lần nữa.
+    Vì vậy $T$ là một cây.
+
+    Bây giờ ta sẽ chứng minh b) bằng cách xem xét liệu $T$ có hướng đến đỉnh $v_1$ hay không?
+    Ta trả lời câu hỏi này đầu tiên bằng cách giả định $T$ tồn tại một đường đi $v_k v_{k-1} \dots v_1$.
+    Cạnh giữa đỉnh các đỉnh $v_2$ và $v_1$ là $e_2$ vì không có cạnh $e_1$.
+    Hơn nữa, cạnh giữa các đỉnh $v_3$ và $v_2$ có thể là $e_2$ hoặc $e_3$ nhưng vì $e_2$ đã được gán vì vậy đỉnh nằm giữa $v_3$ và $v_2$ chỉ có thể là $e_3$.
+    Ta tiến hành theo cách tương tự giữa tất cả các đỉnh trên đường đi, điều này chứng minh rằng đường $v_k v_{k-1} \dots v_1$ thực sự hướng tới đỉnh $v_1$.
+
+    Như vậy, đồ thị có hướng $T$ nằm trong tập hợp các cây khung hướng tới đỉnh $v_i$ trong đồ thị ban đầu $G$.
+    Vì vậy ta có thể kết luận rằng $T \in T_1$ và ta sẽ tiếp tục chứng minh định lý này.
+
+    Để có được ánh xạ mong muốn $f_1: E_1 \rightarrow T_1$, ta phải đặt $f_1(S) = T$.
+    Ngược lại, tập $f^{-1} (T)$ miêu tả tất cả các vết Euler đi qua đỉnh $v_1$ tạo ra cây khung $T$.
+
+    Vì vậy ta sử dụng $f_1(S)=T$ và $S \in E_1$, ta có thể vẽ một vết Euler $S$ theo cách sau.
+    Ta bắt đầu tại một cạnh rời đỉnh $v_1$. Một khi quay lại $v_1$ ta sẽ rời đỉnh này qua một cạnh chưa được đi qua và cũng phải rời $v_1$.
+    Khi không còn cạnh nào rời $v_1$ chưa được đi qua, vết kết thúc.
+    Khi đến đỉnh $v_j$ (với $j > 1$), rời đỉnh này bằng một cạnh không phải là $e_j$ và cũng không nằm trong cây $T$, khi các cạnh này đã được đi qua hết ta mới rời $v_j$ qua cạnh $e_j$.
+
+    Dựa trên tính chất bậc đỉnh vào và bậc đỉnh ra của bất kỳ đỉnh $v_j$ nào trong đồ thị $G$ là bằng nhau, ta có thể tìm một vết Euler $S$ nằm trong tập $E_1$ như $f_1(S)=T$.
+    Ta chú ý rằng một số cây khung $T$ sẽ có nhiều hơn một vết Euler $S$ có thể được tạo ra.
+
+    Sử dụng đồ thị $G$ là một ví dụ, ta sử dụng đồ thị $G$ là một ví dụ, ta sẽ trình bày quá trình sử dụng cây khung $T$ (được tô màu tối hơn trong hình \ref{fig:3}) để xây dựng một vết Euler $S$ tạo ra từ cây khung này.
+    Bắt đầu từ cạnh rời đỉnh $v_1$ hướng đến đỉnh $v_2$. Tại đỉnh $v_2$, ta phải đi qua cạnh hướng đến $v_4$ hoặc cạnh hướng đến $v_3$ là cạnh $e_j$ được sử dụng trong cây $T$.
+    Chú ý tại $v_4$ có hai cạnh đi rời đỉnh này, vì một cạnh hướng đến $v_1$ cũng thuộc $T$, vì vậy ta phải sử dụng cạnh quay về đỉnh $v_2$.
+    Khi đã quay về $v_2$ sử cạnh duy nhất còn lại từ $T$.
+    Cách làm tương tự cho $v_4$, là cạnh còn lại duy nhất từ $T$ để hoàn thành vết Euler $S$.
+
+    Khái niệm chính trong quá trình này như sau: một khi ta đi vào một đỉnh bất kỳ trong đồ thị, ta thoát khỏi đỉnh này bằng một cạnh không phải cây càng lâu càng tốt, đến khi ta chỉ còn lại một cạnh cây.
+    Tiếp tục cho từng đỉnh sẽ tạo ra một đường đi Euler trong đồ thị.
+
+    Một cách tổng quát, ta có thể biểu diễn số vết Euler $S$ có thể được tạo ra từ cây khung $T$ cho trước hướng đến đỉnh $v_i$ (ký hiệu $\lvert f_1{-1} (T) \rvert$) như sau:
+
+    \begin{equation}
+        \lvert f_1^{-1} (T) = d^+ (v_i)! \prod_{j=2}^n \big( d^+ (v_j) - 1 \big) ! \rvert
+    \end{equation}
+
+    Giai thừa của bậc ra của đỉnh $v_1$ xem xét số cách khác nhau mà vết Euler có thể có thể bắt đầu (điều này giải thích vì sao lực lượng của $E_1$ lớn hơn $E$) và tích của giai thừa xem xét bậc ra của $v_j$ trừ đi 1 là số cách vết Euler $S$ đi qua.
+
+    Hơn nữa, dựa trên việc tập trung vào toàn bộ tập các chu trình Euler $E$ và không quan tâm tập đỉnh $v_i$ mà nó bắt đầu, số lượng chu trình được tính theo công thức:
+
+    \begin{equation}
+        \lvert E \rvert = \lvert T_1 \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big) !
+    \end{equation}
+
+    Tích của các giai thừa của các bậc ra của tất cả các đỉnh trong đồ thị $G$ được nhân với tổng số cây khung $T_1$ hướng đến đỉnh $v_1$.
+    
+    Với một loạt các công thức, ta đã chứng minh và xác minh tính chính xác của công thức tương ứng với định lý BEST.
+
+    Định lý BEST dựa trên số cây khung  tồn tại trong một đồ thị có hướng Euler cụ thể.
+    Bây giờ ta cần một định lý cho phép ta xác định số cây khung trong một đồ thị Euler.
+    Định lý này được gọi là định lý cây ma trận, để hiểu đầy đủ về chứng minh của định lý này  cần có thêm một số định nghĩa.
+    Các thuật ngữ và định nghĩa sau đây được lấy từ các công trình \cite{fleischner1990eulerian}, \cite{bollobas1998graduate}, \cite{pevzner2000computational}.
+
+    Khi được cho một đồ thị có hướng Euler $G$, ta có thể xây dựng nhiều ma trận để mã hóa thông tin về các thuộc tính của đồ thị.
+    Một ma trận là ma trận kề, liệt kê số các cạnh giữa các đỉnh trong đồ thị.
+    Ma trận này có kích thước $n \times n$ với $n$ là số đỉnh của đồ thị $G$.
+    Nếu $a_{ij}$ là số cạnh có hướng rời đỉnh $v_i$ và đi vào đỉnh $v_j$ trong đồ thị $G$, khi đó $a_{ij}$ là phần tử $i, j$ của ma trận.
+    Phần tử $i, i$ là các phần tử nằm trên đường chéo chính bằng 0 trừ khi $G$ có nhiều vòng lặp.
+
+    Ta gọi lại đồ thị $G$ từ hình \ref{fig:3} ta vừa sử dụng.
+    Ma trận kề của đồ thị được ký hiệu là $A(G)$.
+
+    \begin{equation*}
+        A(G) = \begin{pmatrix}
+            0 & 1 & 0 & 0 \\ 
+            0 & 0 & 1 & 1 \\ 
+            0 & 0 & 0 & 1 \\ 
+            1 & 1 & 0 & 0
+        \end{pmatrix}
+    \end{equation*}
+
+    Ta nhận thấy điều sau:
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $v_1$ có cạnh hướng đến $v_2$ vì vậy phần tử $1, 2$ là 1.
+        \item $v_2$ có cạnh hướng đến $v_3$ và $v_4$ vì vậy phần tử $2, 3$ và $2, 4$ là 1.
+        \item $v_3$ có cạnh hướng đến $v_4$ vì vậy phần tử $3, 4$ là 1.
+        \item $v_4$ có cạnh hướng đến $v_1$ và $v_2$ vì vậy phần tử $4,1$ và $4, 2$ là 1.
+        \item Tương tự, vì không có đa cạnh cùng hướng trong đồ thị $G$ nên chỉ có các phần tử là 1. Mặt khác, các đường chéo chính đều là 0 vì không có vòng lặp trong đồ thị $G$.
+    \end{enumerate}
+
+    Ma trận thứ hai có thể được xây dựng từ một đồ thị là một ma trận đường chéo.
+    Ma trận này điền các bậc vào của từng đỉnh trong đồ thị vào đường chéo.
+    Tất cả các phần tử khác là 0.
+    Sử dụng cùng đồ thị $G$ ở trên, ma trận đường chéo $D(G)$ là:
+
+    \begin{equation*}
+        D(G) = \begin{pmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 2 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 2
+        \end{pmatrix}
+    \end{equation*} 
+
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 
