@@ -488,6 +488,82 @@
         \end{pmatrix}
     \end{equation*} 
 
+    Ma trận thứ ba kết hợp các thông tin của cả hai ma trận $A(G)$ và $D(G)$ ta đã đề cập ở trên.
+    Một số nhà nghiên cứu về lý thuyết đồ thị sẽ gọi ma trận này là ma trận Kirchoff như trong \cite{fleischner1990eulerian}, trong khi những nhà nghiên cứu khác gọi là ma trận Laplace tổ hợp như trong \cite{bollobas1998graduate}.
+    Trong bài báo này, ta gọi ma trận này là ma trận Laplace, ký hiệu là $L(G)$.
+    Cụ thể, ma trận này là kết quả của $D(G)$ trừ $A(G)$.
+
+    Một lần nữa ta lại sử dụng đồ thị $G$ từ hình \ref{fig:3} làm ví dụ, ma trận Laplace $L(G)$ là:
+
+    \begin{equation*}
+        L(G) = \begin{pmatrix}
+            1 & -1 & 0 & 0 \\
+            0 & 2 & -1 & -1 \\
+            0 & 0 & 1 & -1 \\
+            -1 & -1 & 0 & 2 \\
+        \end{pmatrix}
+    \end{equation*}
+
+    Ma trận này là trung tâm của định lý cây ma trận.
+    Có một số đặc điểm mà tất cả các ma trận Laplace của đồ thị có hướng Euler đều có.
+    Thứ nhất, các đường chéo chính vẫn biểu diễn bậc vào của từng đỉnh trong đồ thị $G$, chỉ loại bỏ vòng lặp.
+    Trong ví dụ của ta không có vòng lặp nào, vì vậy đường chéo được giữ nguyên.
+    Tương tự, cho tồn tại cạnh từ đỉnh $v_i$ đến cạnh $v_j$ thì phần tử $i, j$ của ma trận là $-1$ với $i$ khác $j$.
+
+    Một đặc tính khác của ma trận Laplace là tổng các hàng và các cột bằng 0.
+    Lý do rất đơn giản. Từng cột $i$ đại diện cho hai đại lượng. Một là nằm trên đường chéo, chính là bậc của của đỉnh $v_i$ loại trừ các vòng lặp.
+    Thứ hai là số cạnh đi vào đỉnh $v_i$ từ các đỉnh khác trong đồ thị $G$ và các giá trị này là âm. 
+    Vì vậy, hoàn toàn hợp lý khi tổng các số chính là số tất cả các cạnh đi vào đỉnh $v_i$ và phần tử trên đường chéo tạo ra số 0 cho đồ thị có hướng cân bằng ta xem xét trong trường hợp này
+
+    Mặt khác, từng cột $i$ biểu diễn cho hai đại lượng.
+    Một là số cạnh rời đỉnh $v_i$ ngoại trừ các vòng lặp, đại lượng thứ hai là số cạnh đi vào các đỉnh khác từ $v_i$.
+    Các giá trị này tuy nhiên đều là âm.
+    Nhưng ta biết $G$ là đồ thị có hướng Euler, số cạnh đi và và số cạnh đi ra của một đỉnh bất kỳ là như nhau.
+    Vì vậy, ta biết việc cộng bậc vào của một đỉnh $v_i$ là số dương, tổng các cạnh rời khỏi nó là một số âm cho kết quả luôn luôn là 0 cho mọi ma trận $L(G)$ nếu đồ thị $G$ là đồ thị có hướng Euler.
+
+    Ta sẽ xem xét lại phần phụ đại số của một ma trận.
+    Giá trị này thu được bằng cách bỏ hàng thứ $i$ và cột thứ $i$ của ma trận được cho, sau đó ta tính định thức của ma trận thu được.
+    Ta ký hiệu đại lượng này như sau với $k$ là phần phụ đại số thứ $i$:
+
+    \begin{equation}
+        k = \det_{i, i} L(G)
+    \end{equation}
+
+    Ta đã xét đến ma trận Laplace $L(G)$ trong công thức trên vì trong bài báo, phần định lý và chứng minh ta sẽ xét các phần phụ đại số của ma trận Laplace trong nhiều đồ thị có hướng Euler.
+
+    Ví dụ ta xẽ sét ma trận Laplace của đồ thị $G$ từ hình \ref{fig:3}.
+    Phần phụ đại số tại hàng và cột đầu tiên là định thức của ma trận dưới đây:
+
+
+    \begin{equation*}
+        \begin{pmatrix}
+            2 & -1 & -1 \\
+            0 & 1 & -1 \\
+            1 & 0 & 2
+        \end{pmatrix}
+    \end{equation*}
+
+    Tính định thức của ma trận này ta thu được giá trị $k=2$.
+    Hơn nữa, nếu ta tính cả ba phần phụ đại số còn lại của $L(G)$, ta có thể thấy tất cả đều bằng 2.
+    Lý do cho điều này bắt nguồn từ việc là tổng tất cả các hàng và cột đều bằng 0 và sẽ đúng cho tất cả các ma trận có tổng các hàng và cột đều bằng 0.
+    Chứng minh cho điều này được nêu trong \cite{fleischner1990eulerian}.
+    Một điều quan trọng ta cần chú ý là các ma trận không có tổng các hàng và cột bằng 0 có thể có các phần phụ đại số khác nhau tùy thuộc vào hàng và cột nào bị xóa khỏi ma trận ban đầu.
+    Thông tin này cho phép chúng ta chuyển sang một định lý then chốt để hiểu một cách đầy đủ về định lý BEST và các chủ đề khác liên quan đến đồ thị Euler.
+    Như đã được nêu ở trước, định lý này được gọi là định lý cây ma trận.
+
+    \begin{dl}
+        Cho một đồ thị có hướng $G$ với tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ và một tập các cây khung $t_i (G)$ hướng đến đỉnh $v_i$ và $\lvert t_i(G) \rvert$ bằng với phần phụ đại số của ma trận $L(G)$ trên hàng và cột thứ $i$:
+
+        \begin{equation*}
+            \lvert t_i(G) \rvert = \det_{i, i} L(G)
+        \end{equation*}
+    \end{dl}
+
+    Phần chứng minh dưới đây cho định lý cây ma trận được xây dựng với sự hỗ trợ từ \cite{bollobas1998graduate} chứng minh một định lý tương tự liên quan đến đồ thị vô hướng có trọng số cho lưới điện.
+
+    \textbf{Chứng minh:}
+    
+
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 
