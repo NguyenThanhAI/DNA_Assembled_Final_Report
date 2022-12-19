@@ -562,7 +562,106 @@
     Phần chứng minh dưới đây cho định lý cây ma trận được xây dựng với sự hỗ trợ từ \cite{bollobas1998graduate} chứng minh một định lý tương tự liên quan đến đồ thị vô hướng có trọng số cho lưới điện.
 
     \textbf{Chứng minh:}
-    
+    Ta sẽ sử dụng quy nạp cho số cạnh $m$ trong một đồ thị cho chứng minh này.
+    Hơn nữa, ta giả định ma trận được cho là liên thông vì ma trận không liên thông không có cây khung và $m$ lơn hơn một, một đồ thị với một cạnh chỉ có một cây khung.
+
+    Bây giờ khi được cho hai đỉnh $v_1$ và $v_2$ kề với nhau trong đồ thị $G$, ta sẽ tạo ra hai đồ thị mới từ $G$ mà có số cạnh ít hơn $m$.
+    Đồ thị đầu tiên được tạo ra bằng cách xóa tất cả các cạnh có hướng rời $v_1$ và hướng đến $v_2$ trong đồ thị $G$, mà tập các cạnh này ta gọi là $v_1 v_2$.
+    Cách này tạo ra đồ thị $G - v_1 v_2$.
+    Để tạo ra đồ thị thứ hai, ta xét các cạnh $v_1 v_2$, tạo ra đồ thị $G / v_1 v_2$.
+    Trong trường hợp này, các đỉnh $v_1$ và $v_2$ được chập vào làm một đỉnh, tạo ra một đỉnh mới $v_{12}$.
+    Cũng như vậy, các cạnh trước đây đi vào từng đỉnh cũ từ một đỉnh $v_i$ cụ thể cũng được ghép lại làm một cạnh với trọng số là tổng của các cạnh được gộp.
+    Hơn nữa, tất cả các cạnh đi ra từ các đỉnh bị loại bỏ và đi vào đỉnh $v_i$ được gộp lại và trọng số được tính tương tự.
+    Ta chú ý cả đồ thị $G - v_1 v_2$ và $G / v_1 v_2$ có số cạnh nhỏ hơn $m$.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\textwidth]{4.png}
+        \caption{Sử dụng chu trình Euler $v_1 v_2 v_4 v_2 v_3 v_4 v_1$ trong đồ thị $G$, ánh xạ tạo ra cây khung hướng đến đỉnh $v_1$ biểu thị trong các đường đậm trong đồ thị bên phải.}
+        \label{fig:4}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.8\textwidth]{5.png}
+        \caption{Các đồ thị $G$, $G - v_1 v_2$ và $G / v_1 v2$}
+        \label{fig:5}
+    \end{figure}
+
+    Hình \ref{fig:5} minh họa một ví dụ tạo ra hai đồ thị từ đồ thị $G$.
+    Ta chú ý cách $G - v_1 v_2$ chỉ bỏ đi một cạnh có hướng từ đỉnh $v_1$ đến đỉnh $v_2$ và $G / v_1 v_2$ xét các cạnh, có một cạnh trọng số 2 đi từ đỉnh $v_4$ đến đỉnh mới $v_{12}$ được biểu diễn bằng hai mũi tên trên một cạnh.
+    Việc này bù cho đỉnh $v_4$ có cạnh đến đỉnh $v_1$ và $v_2$ trong đồ thị $G$ ban đầu.
+    Không có nhiều cạnh rời khỏi đỉnh $v_{12}$ vì không có đỉnh nào trong $G$ có cạnh đi từ cả $v_1$ và $v_2$.
+
+    Khi các đồ thị mới được tạo ra, mối quan hệ sau dựa trên số cây khung được đảm bảo, với $a_{12}$ là tổng số cạnh $v_1 v_2$ tồn tại trong đồ thị $G$:
+
+    \begin{equation}
+        \lvert t_i (G) \rvert = \lvert t_i (G - v_1 v_2) \rvert + a_{12} \lvert t_1 (G / v_1 v_2) \rvert
+    \end{equation}
+
+    Đặc biệt, số cây khung trong đồ thị $G$ hướng đến đỉnh $v_i$ bằng với số cây khung trong đồ thị $G - v_1 v_2$ (cũng hướng đến đỉnh $v_i$) cộng với tích của số cây khung trong đồ thị $G / v_1 v_2$ và số cạnh có hướng từ đỉnh $v_1$ hướng đến đỉnh $v_2$.
+    Thành phần đầu tiên ở bên vế phải xét đến tất cả các cây khung hướng đến đỉnh $v_i$ khi mà các cạnh $v_1 v_2$ đã bị xóa đi.
+    Vì vậy, thành phần thứ hai phải xét đến tất cả các cây khung có cạnh $v_1 v_2$ ở trong chúng.
+    Bởi vì điều này, ta có thể biểu diễn các cạnh trên bằng chính nó $a_{12}$.
+    Xóa đi số lượng cạnh này sẽ làm tất cả các cây khung hướng đến đỉnh $v_i$ trong đồ thị mà $v_1 v_2$ đã bị xóa. Ta biết đồ thị này là $G - v_1 v_2$.
+
+    Bằng cách xét tất cả các cây khung hướng đến một trong bốn đỉnh bất kỳ trong đồ thị $G$, ta nhận thấy công thức trên là đúng.
+    Ta chọn đỉnh $v_4$, ta thấy có hai cây khung hướng đến đỉnh này.
+    Cây khung đầu tiên là các cạnh có hướng $v_1 v_2, v_2 v_3$ và $v_3 v_4$ và cây khung thứ hai gồm các cạnh $v_1 v_2, v_2 v_4$ và $v_3 v_4$.
+    Với vế bên phải của công thức trên và đồ thị $G - v_1 v_2$ ta thấy không có cây khung nào hướng đến đỉnh $v_4$.
+    Vì vậy, tất cả các cây khung phải được tạo ra từ thành phần thứ hai của công thức trên.
+    Sử dụng tất cả các cạnh tại $v_4 v_2$, ta có thể xây dựng hai cây khung đi qua ba đỉnh và hướng đến đỉnh $v_4$.
+    Nhân số này với số cạnh $v_1 v_2$ đã bị xóa là 1, ta thu được giá tị cuối cùng là 2.
+    Giá trị này thực sự bằng với số cây khuhng trong đồ thị $G$ hướng đến đỉnh $v_4$.
+
+    Bây giờ ta sẽ chỉ ra mối quan hệ cho các cây khung trong $G$, $G - v_1 v_2$ và $G / v_1 v_2$.
+    Ta chuyển sang phần thứ hai của chứng minh.
+    Ta xây dựng một mối quan hệ tương tự với các phần phụ đại số của từng ma trận Laplace của đồ thị được cho bởi công thức:
+
+    \begin{equation}
+        \det_{i, i} L(G) = \det_{i, i} L(G - v_1 v_2) + a_{12} \det_{i, i} L (G / v_1 v_2)
+    \end{equation}
+
+    Để hoàn thành chứng minh này, ta phải chứng minh không thức trên sẽ luôn đúng.
+    Để làm điều này ta có thể đưa vào đẳng thức giữa các phần tử trong vế phải của công thức trên và vế phải trong công thức trước nữa dựa trên $\lvert t_i (G) \rvert$.
+    Ta cần nhớ rằng ta đang chứng minh định lý bằng quy nạp dựa trên số cạnh $m$, chú ý các bất đẳng thức trên đồ thị nhỏ hơn $m$ cạnh.
+
+    Giống với công thức ở phần đầu của chứng minh này, mối liên hệ giữa các phần phụ đại số sử dụng cùng một tổng với các đồ thị $G - v_1 v_2$ và $G / v_1 v_2$ và số cạnh $v_1 v_2$ đã bị xóa khỏi đồ thị $G$ ban đầu.
+    Vì điêu fnayf, ta có thể tiếp cận theo cách tương tự, bằng cách nhìn vào từng thành phần riêng biệt, bắt đầu với ma trận Laplace của từng đồ thị.
+
+    Như đã được đề cập ban đầu ở chứng minh, ma trận Lplace  của một đồ thị có hướng liệt kê các cạnh có hướng từ một đình $v_i$ đến đỉnh $v_j$ được biểu diễn là một số âm ở phần tử $i, j$ của ma trận.
+    Ta sẽ ký hiệu phần tử này là $-a_{ij}$ với $i \neq j$.
+    Trên đường chéo của ma trận $L(G)$ là số bậc vào của từng đỉnh tương ứng trong đồ thị $G$, với $d_i$ tại phần tử $i, i$ là số bậc vào của đỉnh $v_i$.
+    Vì vậy ma trận $L(G)$ của một đồ thị có hướng tổng quát $G$ với $n$ đỉnh có thể được viết dưới dạng như sau:
+
+    \begin{equation}
+        L(G) = \begin{pmatrix}
+            d_1 & - a_{12} & - a_{13} & - a_{14} & \hdots & - a_{1n} \\
+            - a_{21} & d_2 & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
+            - a_{31} & - a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - a_{41} & - a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
+            \vdots & \vdots & \vdots & \thickspace & \cdots & \vdots \\
+            - a_{n1} & - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
+        \end{pmatrix}
+    \end{equation}
+
+    Bây giờ dựa vào việc xóa tất cả các cạnh có hướng $v_1 v_2$ trong đồ thị tổng quát của ta,
+    ma trận Laplace tương ứng có dạng dưới đây, ta cần nhớ rằng $a_{12}$ là số cạnh cố hướng tồn tại đi từ đỉnh $v_1$ đến đỉnh $v_2$.
+
+    \begin{equation}
+        L(G - v_1 v_2) = \begin{pmatrix}
+            d_1 & 0 & - a_{13} & - a_{14} & \hdots & - a_{1n} \\
+            - a_{21} & d_2 - a_{12} & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
+            - a_{31} & - a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - a_{41} & - a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
+            \vdots & \vdots & \vdots & \thickspace & \cdots & \vdots \\
+            - a_{n1} & - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
+        \end{pmatrix}
+    \end{equation}
+
+    Ta chú ý chỉ có hai thành phần của ma trận này khác với ma trận ban đầu $L(G)$, tại vị trí các phần tử $1, 2$ và $2, 2$ biểu diễn các cạnh có hướng từ đỉnh $v_1$ đến đỉnh $v_2$ và số bậc vào của đỉnh $v_2$.
+    Số bậc vào của đỉnh $v_2$ sẽ giảm đi bằng số cạnh có hướng đi từ đỉnh $v_1$ đến đỉnh $v_2$ là $a_{12}$ đã bị xóa đi.
+    Hơn nữa giá trị trong phần tử $1, 2$ cũng bị xóa đi.
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
