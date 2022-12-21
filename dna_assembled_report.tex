@@ -640,7 +640,7 @@
             - a_{21} & d_2 & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
             - a_{31} & - a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
             - a_{41} & - a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
-            \vdots & \vdots & \vdots & \thickspace & \cdots & \vdots \\
+            \vdots & \vdots & \vdots & \thickspace & \ddots & \vdots \\
             - a_{n1} & - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
         \end{pmatrix}
     \end{equation}
@@ -654,7 +654,7 @@
             - a_{21} & d_2 - a_{12} & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
             - a_{31} & - a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
             - a_{41} & - a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
-            \vdots & \vdots & \vdots & \thickspace & \cdots & \vdots \\
+            \vdots & \vdots & \vdots & \thickspace & \ddots & \vdots \\
             - a_{n1} & - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
         \end{pmatrix}
     \end{equation}
@@ -662,6 +662,65 @@
     Ta chú ý chỉ có hai thành phần của ma trận này khác với ma trận ban đầu $L(G)$, tại vị trí các phần tử $1, 2$ và $2, 2$ biểu diễn các cạnh có hướng từ đỉnh $v_1$ đến đỉnh $v_2$ và số bậc vào của đỉnh $v_2$.
     Số bậc vào của đỉnh $v_2$ sẽ giảm đi bằng số cạnh có hướng đi từ đỉnh $v_1$ đến đỉnh $v_2$ là $a_{12}$ đã bị xóa đi.
     Hơn nữa giá trị trong phần tử $1, 2$ cũng bị xóa đi.
+
+    Ma trận Laplace thứ ba cho đồ thị $G / v_1 v_2$ sẽ khác một chút.
+    Vì số đỉnh được giảm đi từ đồ thị ban đầu $G$, vì vậy mà $L(G / v_1 v_2)$ sẽ có kích thước nhỏ hơn.
+    Cụ thể, kích thước của ma trận này là $(n-1) \times (n-1)$ vì hai đỉnh trong $G$ được gộp lại chỉ tạo ra một đỉnh.
+
+    \begin{equation}
+        L (G / v_1 v_2) = \begin{pmatrix}
+            d_1 - a_{21} + d_2 - a_{12} & - (a_{13} + a_{23}) & - (a_{14} + a_{24}) & \hdots & - (a_{1n} + a_{2n}) \\
+            - (a_{31} + a{32}) & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - (a_{41} + a{42}) & - a_{43} & d_4 & \thickspace & - a_{4n} \\
+            \vdots & \vdots & \thickspace & \ddots & \vdots \\
+            - (a_{n1} + a_{n2}) & - a_{n3} & - a_{n4} & \hdots & d_n 
+        \end{pmatrix}
+    \end{equation}
+
+    So sánh ma trận này với ma trận trước, ta thấy phần tử $1, 1$ là tổng của các phần tử $1, 1$, $1, 2$, $2, 1$ và $2, 2$ trong $L(G - v_1 v_2)$.
+    Điều này là hợp lý vì các đỉnh này được gộp lại và các cạnh có hướng từ $v_1$ đến $v_2$ cũng bị loại bỏ.
+    Hơn nữa, các phần tử còn lại của hàng đầu tiên và cột đầu tiên ta thấy từng phần tử là tổng của các phần tử tương từ hai hàng đầu tiên và hai cột đầu tiên từ ma trận trước.
+    Một lần nữa, điều này trùng khớp với đồ thị thực sự.
+    Các cạnh mà một đỉnh $v_i$ gửi hoặc nhận từ cả đỉnh $v_1$ và đỉnh $v_2$ được kết hợp lại để tạo ra một cạnh đa kề với ma trận mới $v_{12}$.
+    Vì vậy, các phần tử này trong hàng thứ nhất và cột thứ nhất cho ma trận $L(G/v_1 v_2)$ thực sự là tổng của các cạnh này.
+    Phần còn lại của của ma trận giống hệt như hai ma trận trước.
+
+    Ta đã thiết lập dạng của các ma trận cho từng đồ thị cụ thể và cách chúng liên quan đến nhau.
+    Bây giờ ta sẽ tập trung vào phần phụ đại số  cho từng ma trận.
+    Để thuận lợi cho việc ký hiệu, ta sẽ xem xét phần phụ đài số dựa trên việc loại bỏ hàng và cột thứ nhất của từng ma trận Laplace tương ứng sẽ được gọi là $k_1$.
+    Cụ thể, từng $k_1$ có thể được tạo ra bằng các công thức sau:
+
+    \begin{equation}
+        k_1(G) = \det\begin{pmatrix}
+            d_2 & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
+            - a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
+            \vdots & \vdots & \thickspace & \ddots & \vdots \\
+            - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
+        \end{pmatrix}
+    \end{equation}
+
+    \begin{equation}
+        k_1(G - v_1 v_2) = \det\begin{pmatrix}
+            d_2 - a_{12} & - a_{23} & - a_{24} & \hdots & - a_{2n} \\
+            a_{32} & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            a_{42} & - a_{43} & d_4 & \thickspace & \vdots \\
+            \vdots & \vdots & \thickspace & \ddots & \vdots \\
+            - a_{n2} & - a_{n3} & \hdots & \hdots & d_n
+        \end{pmatrix}
+    \end{equation}
+
+    \begin{equation}
+        k_1 (G / v_1 v_2) = \det\begin{pmatrix}
+            d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - a_{43} & d_4 & \thickspace & - a_{4n} \\
+            \vdots & \thickspace & \ddots & \vdots \\
+            - a_{n3} & - a_{n4} & \hdots & d_n 
+        \end{pmatrix}
+    \end{equation}
+
+    Dựa trên việc tính các giá trị này, ta có thể chú ý mối liên hệ có thể được sử dụng để đơn giản hóa các ký hiệu.
+    Nếu ta gọi
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
