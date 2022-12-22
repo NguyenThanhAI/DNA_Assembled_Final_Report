@@ -710,7 +710,7 @@
         \end{pmatrix}
     \end{equation}
 
-    \begin{equation}
+    \begin{equation} \label{eq:Det-of-Laplacian_G_slash}
         k_1 (G / v_1 v_2) = \det\begin{pmatrix}
             d_3 & - a_{34} & \hdots & - a_{3n} \\
             - a_{43} & d_4 & \thickspace & - a_{4n} \\
@@ -720,7 +720,71 @@
     \end{equation}
 
     Dựa trên việc tính các giá trị này, ta có thể chú ý mối liên hệ có thể được sử dụng để đơn giản hóa các ký hiệu.
-    Nếu ta gọi
+    Nếu ta gọi toàn bộ vế phải của \ref{eq:Det-of-Laplacian_G_slash} là $D_0$, ta có thể tính $k_1$ là một chuỗi các định thức.
+    Tiếp theo $D_0$ là $D_1, D_2, \hdots, D_n$ với $n$ được lấy từ thành phần cuối cùng cần để tính tịnh thức.
+    Sử dụng quy tắc tìm định thức từ đại số tuyến tính.
+    Ta chú ý các thành phần trong ngoặc vuông dưới đây chính xác bằng hai công thức đầu trong ba công thức trên:
+
+    \begin{equation}
+        \begin{aligned}
+            k_1 (G) &= d_2 D_0 - \big \lbrack (-a_{23} . D_1) - (-a_{24}.D_2) + \hdots - (- a_{2n}. D_n) \big \rbrack \\
+            k_1 (G - v_1 v_2) &= (d_2 - a_{12}). D_0 - \big \lbrack (- a_{23}. D_1) + (- a_{24}.D_2) + \hdots - (-a_{2n}D_n) \big \rbrack \\
+            k_1 (G / v_1 v_2) &= D_0
+        \end{aligned}
+    \end{equation}
+
+    Nếu ta sử dụng các giá trị này với các giá trị tương ứng và đơn giản hóa, ta thu được hai vế bằng nhau, công thức sau sẽ luôn đúng:
+
+    \begin{equation}
+        k_1 (G) = k_1 (G - v_1 v_2) + a_{12} k_1 (G / v_1 v_2)
+    \end{equation}
+
+    Đẳng thức trên vẫn đúng cho mọi $i$
+
+    \begin{equation}
+        \det_{i,i} L(G) = \det_{i, i} L (G - v_1 v_2) + a_{12} \det_{i, i} L (G/ v_1 v_2)
+    \end{equation}
+
+    Khi thiết lập đẳng thức này, ta hoàn thành chứng minh định lý cây ma trận.
+    Vì chứng minh này dựa vào quy nạp trên số cạnh $m$ trong đồ thị $G$, ta có thể thu được đẳng thức sau khi biết số cây khung và phần phụ đại số cho hai đồ thị với số cạnh nhỏ hơn $m$ là bằng nhau.
+
+    \begin{equation}
+        \lvert t_i (G - v_1 v_2) \rvert + a_{12} \lvert t_i (G / v_1 v_2) \rvert = \det_{i, i} L(G - v_1 v_2) + a_{12} \det_{i, i} L (G / v_1 v_2)
+    \end{equation}
+
+    Vì vậy:
+
+    \begin{equation}
+        \lvert t_i (G) \rvert = \det_{i, i} L(G)
+    \end{equation}
+
+    Vì vậy số cây khung trong một đồ thị có hướng Euler $G$ thực sự bằng với phần phụ đại số của ma trận Laplace của nó.
+
+    Khi đã hoàn thành hai chứng minh và các công thức thu được từ từng chứng minh, ta có thể phát biểu như sau:
+    Cho một đồ thị de Bruijin $G$ được tạo từ một tập các đoạn DNA, xác suất để lắp ráp đúng chuỗi ban đâu là:
+
+    \begin{equation}
+        \dfrac{1}{\lvert t_i(G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!}
+    \end{equation}
+
+    \section{Bài toán (siêu) đường đi Euler}
+
+    Bài toán (siêu) đường đi Euler (được gọi ở đây là ESP) nhằm thực hiện những điều sau:
+    Cho một đồ thị Euler $G$ với một tập các đường đi $P$ trong đồ thị, tìm một chu trình Euler trong đồ thị $G$ chứa tất cả các thành phần của $P$ là đường đi con.
+
+    Ta đã nhấn mạnh ở phần trước của bài báo là kỹ thuật sử dụng lý thuyết đồ thị để lắp ráp các đoạn DNA được một số tác giả gọi là cách tiếp cận đường đi Euler.
+    Tuy nhiên, theo thuật ngữ mà ta sử dụng, một đường đi không lặp lại các cảnh hoặc các đỉnh nên không phải lúc nào cũng hoàn thành một hành trình Euler qua một đồ thị.
+    Vì vậy, trong phần còn lại của bài báo, cách tiếp cận này thực tế đề cập đến các vết Euler, ngược lại với các đường đi.
+
+    Với dữ liệu không có lỗi và các đoạn DNA hoàn hảo, ta có thể tạo ra một đồ thị có hướng biểu diễn các đoạn từ chuỗi DNA.
+    Một chu trình Euler trong đồ thị này hoàn thành một dãy có thể được đưa ra từ dữ liệu.
+    Ta tìm tổng số chu trình Euler trong một đồ thị như vậy được gọi là bài toán đường đi Euler.
+
+    Tuy nhiên, trong trường hợp dữ liệu có nhiều lỗi và lặp lại, các đoạn có đồ dài khác nhau, một bài toán đường đi Euler trở nên khó khăn hơn rất nhiều.
+    Các đoạn có độ dài từ 100 đến 300 nucleotide và khi cố tạo ra một đồ thị de Bruijin với 20 bộ sẽ tạo ra đồ thị với hàng triệu đỉnh và cạnh.
+    Rõ ràng một đồ thị có tính chất này không dễ dàng làm việc.
+
+    
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
