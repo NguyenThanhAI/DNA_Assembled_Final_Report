@@ -222,7 +222,7 @@
     Ta giả định người đọc đã quen thuộc với những nền tảng cơ bản của lý thuyết đồ thị, chẳng hạn như được đề cập trong \cite{tucker2006applied} và \cite{west2001introduction}.
     Các thuật ngữ cơ bản trong bài báo theo các thuật ngữ của \cite{west2001introduction}.
 
-    Ta có thẻ di chuyển qua các phần tử của đồ thị theo nhiều cách khác nhau.
+    Ta có thể di chuyển qua các phần tử của đồ thị theo nhiều cách khác nhau.
     Một đường đi là một hành trình bất kỳ qua một đồ thị tạo ra một danh sách các đỉnh và các cạnh sao cho một cạnh kết nối các đỉnh ở hai bên của cạnh này.
     Một vết là một đường đi mà không có bất kỳ cạnh nào được lặp lại.
     Một vết khép kín là một chu trình và danh sách các đỉnh được biểu diễn theo thứ tự tuần hoàn.
@@ -260,7 +260,7 @@
     Các "mảnh ghép" là các chuỗi DNA khác nhau đọc được và hình được xếp hoàn chỉnh là toàn bộ chuỗi ban đầu hoặc bộ gen trông như thế nào.
     Thông tin được cung cấp về khía cạnh này của tin sinh học đến từ các phần khác nhau của công trình \cite{jones2004introduction}.
 
-    Cụ thể, lắp ráp các đoạn DNA là một kỹ thuật trong phòng thí nghiệm xác định cấu hình củ toàn bộ bộ gen dựa trên một loạt các chuỗi được đọc từ bộ gen đó.
+    Cụ thể, lắp ráp các đoạn DNA là một kỹ thuật trong phòng thí nghiệm xác định cấu hình của toàn bộ bộ gen dựa trên một loạt các chuỗi được đọc từ bộ gen đó.
     Vì một chuỗi DNA đầy đủ bao gồm hàng triệu nucleotide nên không có cách nào để nắm được toàn bộ cấu trúc một cách rõ ràng.
     Với công nghệ ngày nay, các nhà khoa học và các nhà nghiên cứu đã có thể thu được các đoạn DNA có độ dài từ 500 đến 1200 nucleotide.
     Tất cả các đoạn này bao gồm bốn loại ba-zơ tạo nên DNA: Adenine (A), Thymine (T), Guanine (G) và Cystosine (C).
@@ -274,7 +274,7 @@
     Dựa theo công trình \cite{watson2003molecular}, ta biết rằng với mỗi chuỗi đơn DNA tồn tại một chuỗi bổ sung, A khớp với T, C khớp với G.
     Vì vây, khi nhìn vào các đoạn đọc được từ một chuỗi DNA, ta không thể xác định được liệu đoạn này đến từ chuỗi mong muốn hay đến từ chuỗi bổ sung.
 
-    Mặc dù tỷ lệ lỗi và việc không biết được đoạn DNA đến từ chuỗi quan tâm hay chuỗi bổ sung cản trở một số bước trong quá trình giải trình tự và lắp ráp các đoạn DAN, nhưng điều ta quan tâm và dễ nhầm lẫn hơn cả đến từ các chuỗi được lặp đi lặp lại.
+    Mặc dù tỷ lệ lỗi và việc không biết được đoạn DNA đến từ chuỗi quan tâm hay chuỗi bổ sung cản trở một số bước trong quá trình giải trình tự và lắp ráp các đoạn DNA, nhưng điều ta quan tâm và dễ nhầm lẫn hơn cả đến từ các chuỗi được lặp đi lặp lại.
     Bộ gen người có một lượng lớn các chuỗi lặp đi lặp lại nhiều lần.
     Hơn nữa, nếu một chuỗi lặp lại có độ dài lớn hơn độ dài đoạn có thể đọc được thì việc xây dựng lại bộ gen gần như là không thể.
     Ví dụ, ta xét một bộ gen cụ thể có chuỗi lặp lại có độ dài 2000 nucleotide.
@@ -293,13 +293,13 @@
 
     Giải trình tự bằng lai ghép là một kỹ thuật trong phòng thí nghiệm gần giống như nhìn vào các đoạn của DNA,
     được gọi là mảng DNA, nhưng không nên nhầm lẫn với lắp ráp các đoạn DNA, vì chúng khác nhau.
-    Cụ thể, giải trình tự bằng lai ghép (SBD) chủ yêu dựa vào sự liên kết của một đoạn DNA mục tiêu chưa biết với một dãy các đoạn tổng hợp ngắn hơn gọi là đầu dò.
+    Cụ thể, giải trình tự bằng lai ghép (SBD) chủ yếu dựa vào sự liên kết của một đoạn DNA mục tiêu chưa biết với một dãy các đoạn tổng hợp ngắn hơn gọi là đầu dò.
     Các đầu dò này có dộ dài khoảng từ 8 đến 30 nucleotide và chúng liên kết với mục tiêu dựa trên phần bổ sung Watson-Crick được đề cập trong \cite{de1946combinatorial}.
 
     Tuy nhiên, chính cách tiếp cận lý thuyết đồ thị sử dụng SBH \cite{idury1995new} đã đề xuất cách tiếp cận tương tự trong lĩnh vực lắp ráp các đoạn DNA.
     Trong bài báo của mình, các tác giả đã định nghĩa các quy tắc để xây dựng một đồ thị có hướng dựa trên các đoạn DNA.
     Cụ thể hơn, các quy tắc này là để xây dựng một đồ thị de Bruijin dựa trên các đoạn DNA có độ dài $k$.
-    Đồ thị có các định được gán nhãn bằng một đoạn có độ dài là $k-1$, các cạnh được gán nhãn bằng đoạn có độ dài $k$, kết nối hai đỉnh kề trong chuỗi.
+    Đồ thị có các đỉnh được gán nhãn bằng một đoạn có độ dài là $k-1$, các cạnh được gán nhãn bằng đoạn có độ dài $k$, kết nối hai đỉnh kề trong chuỗi.
 
     \begin{figure}[h!]
         \centering
@@ -308,7 +308,7 @@
         \label{fig:2}
     \end{figure}
 
-    Hình \ref{fig:2} min họa một đồ thị de Bruijin cho một chuỗi đơn giản ATGTGCCGCA, chuỗi này đã được sử dụng bởi \cite{idury1995new}.
+    Hình \ref{fig:2} minh họa một đồ thị de Bruijin cho một chuỗi đơn giản ATGTGCCGCA, chuỗi này đã được sử dụng bởi \cite{idury1995new}.
     Ở đây, các đoạn DNA đọc được có độ dài là 3.
     Vì vậy, các đỉnh được đánh dấu bằng các đoạn có độ dài là 2 và các cạnh được đánh dấu bằng các đoạn có độ dài là 3, biểu diễn cho các bộ ba thu được từ chuỗi ban đầu.
     Ta cần chú ý rằng trong đồ thị trên chỉ có duy nhất một vết Euler vì đây chỉ là một trường hợp đơn giản.
@@ -348,7 +348,7 @@
     Định lý BEST được phát biểu như sau:
 
     \begin{dl}
-        Cho một đồ thị có hướng liên thông $G$ và tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ tất cả đều có bậc chắn, số chu trình Euler là $\lvert s(G) \rvert$ được tính theo công thức sau, với $\lvert t_i (G) \rvert$ là số cây khung hướng đến gốc là một đỉnh $v_i$ bất kỳ trong $G$:
+        Cho một đồ thị có hướng liên thông $G$ và tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ tất cả đều có bậc chẵn, số chu trình Euler là $\lvert s(G) \rvert$ được tính theo công thức sau, với $\lvert t_i (G) \rvert$ là số cây khung hướng đến gốc là một đỉnh $v_i$ bất kỳ trong $G$:
 
         \begin{equation*}
             \lvert s(G) \rvert = \lvert t_i (G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!
@@ -387,7 +387,7 @@
         \item $T$ hướng đến đỉnh $v_1$.
     \end{enumerate}
 
-    Để chứng minh a) đầu tiên ta giả sử rằng $T$ chứa một chu trình $C$, chu trình này không chứ $v_1$.
+    Để chứng minh a) đầu tiên ta giả sử rằng $T$ chứa một chu trình $C$, chu trình này không chứa $v_1$.
     Vì $C$ là một chu trình, từng đỉnh trong $C$ có bậc ra là 1.
     Giả định cạnh $e_g$ là cạnh cuối của vết Euler $S$ trong chu trình $C$ kết nối đỉnh $v_g$ và $v_h$.
     Nếu trong trường hợp này $S$ quay lại $v_h$ mặc dù đã rời đỉnh này lần cuối sau khi đi qua đỉnh $e_h$ trước đó.
@@ -423,10 +423,10 @@
     Khái niệm chính trong quá trình này như sau: một khi ta đi vào một đỉnh bất kỳ trong đồ thị, ta thoát khỏi đỉnh này bằng một cạnh không phải cây càng lâu càng tốt, đến khi ta chỉ còn lại một cạnh cây.
     Tiếp tục cho từng đỉnh sẽ tạo ra một đường đi Euler trong đồ thị.
 
-    Một cách tổng quát, ta có thể biểu diễn số vết Euler $S$ có thể được tạo ra từ cây khung $T$ cho trước hướng đến đỉnh $v_i$ (ký hiệu $\lvert f_1{-1} (T) \rvert$) như sau:
+    Một cách tổng quát, ta có thể biểu diễn số vết Euler $S$ có thể được tạo ra từ cây khung $T$ cho trước hướng đến đỉnh $v_i$ (ký hiệu $\lvert f_1^{-1} (T) \rvert$) như sau:
 
     \begin{equation}
-        \lvert f_1^{-1} (T) = d^+ (v_i)! \prod_{j=2}^n \big( d^+ (v_j) - 1 \big) ! \rvert
+        \lvert f_1^{-1} (T) \rvert = d^+ (v_i)! \prod_{j=2}^n \big( d^+ (v_j) - 1 \big) !
     \end{equation}
 
     Giai thừa của bậc ra của đỉnh $v_1$ xem xét số cách khác nhau mà vết Euler có thể có thể bắt đầu (điều này giải thích vì sao lực lượng của $E_1$ lớn hơn $E$) và tích của giai thừa xem xét bậc ra của $v_j$ trừ đi 1 là số cách vết Euler $S$ đi qua.
@@ -513,7 +513,7 @@
     Một đặc tính khác của ma trận Laplace là tổng các hàng và các cột bằng 0.
     Lý do rất đơn giản. Từng cột $i$ đại diện cho hai đại lượng. Một là nằm trên đường chéo, chính là bậc của của đỉnh $v_i$ loại trừ các vòng lặp.
     Thứ hai là số cạnh đi vào đỉnh $v_i$ từ các đỉnh khác trong đồ thị $G$ và các giá trị này là âm. 
-    Vì vậy, hoàn toàn hợp lý khi tổng các số chính là số tất cả các cạnh đi vào đỉnh $v_i$ và phần tử trên đường chéo tạo ra số 0 cho đồ thị có hướng cân bằng ta xem xét trong trường hợp này
+    Vì vậy, hoàn toàn hợp lý khi tổng các số chính là số tất cả các cạnh đi vào đỉnh $v_i$ và phần tử trên đường chéo tạo ra số 0 cho đồ thị có hướng cân bằng ta xem xét trong trường hợp này.
 
     Mặt khác, từng cột $i$ biểu diễn cho hai đại lượng.
     Một là số cạnh rời đỉnh $v_i$ ngoại trừ các vòng lặp, đại lượng thứ hai là số cạnh đi vào các đỉnh khác từ $v_i$.
@@ -539,7 +539,7 @@
         \begin{pmatrix}
             2 & -1 & -1 \\
             0 & 1 & -1 \\
-            1 & 0 & 2
+            -1 & 0 & 2
         \end{pmatrix}
     \end{equation*}
 
@@ -563,7 +563,7 @@
 
     \textbf{Chứng minh:}
     Ta sẽ sử dụng quy nạp cho số cạnh $m$ trong một đồ thị cho chứng minh này.
-    Hơn nữa, ta giả định ma trận được cho là liên thông vì ma trận không liên thông không có cây khung và $m$ lơn hơn một, một đồ thị với một cạnh chỉ có một cây khung.
+    Hơn nữa, ta giả định ma trận được cho là liên thông vì ma trận không liên thông không có cây khung và $m$ lớn hơn một, một đồ thị với một cạnh chỉ có một cây khung.
 
     Bây giờ khi được cho hai đỉnh $v_1$ và $v_2$ kề với nhau trong đồ thị $G$, ta sẽ tạo ra hai đồ thị mới từ $G$ mà có số cạnh ít hơn $m$.
     Đồ thị đầu tiên được tạo ra bằng cách xóa tất cả các cạnh có hướng rời $v_1$ và hướng đến $v_2$ trong đồ thị $G$, mà tập các cạnh này ta gọi là $v_1 v_2$.
@@ -627,9 +627,9 @@
     Ta cần nhớ rằng ta đang chứng minh định lý bằng quy nạp dựa trên số cạnh $m$, chú ý các bất đẳng thức trên đồ thị nhỏ hơn $m$ cạnh.
 
     Giống với công thức ở phần đầu của chứng minh này, mối liên hệ giữa các phần phụ đại số sử dụng cùng một tổng với các đồ thị $G - v_1 v_2$ và $G / v_1 v_2$ và số cạnh $v_1 v_2$ đã bị xóa khỏi đồ thị $G$ ban đầu.
-    Vì điêu fnayf, ta có thể tiếp cận theo cách tương tự, bằng cách nhìn vào từng thành phần riêng biệt, bắt đầu với ma trận Laplace của từng đồ thị.
+    Vì điều này, ta có thể tiếp cận theo cách tương tự, bằng cách nhìn vào từng thành phần riêng biệt, bắt đầu với ma trận Laplace của từng đồ thị.
 
-    Như đã được đề cập ban đầu ở chứng minh, ma trận Lplace  của một đồ thị có hướng liệt kê các cạnh có hướng từ một đình $v_i$ đến đỉnh $v_j$ được biểu diễn là một số âm ở phần tử $i, j$ của ma trận.
+    Như đã được đề cập ban đầu ở chứng minh, ma trận Laplace  của một đồ thị có hướng liệt kê các cạnh có hướng từ một đình $v_i$ đến đỉnh $v_j$ được biểu diễn là một số âm ở phần tử $i, j$ của ma trận.
     Ta sẽ ký hiệu phần tử này là $-a_{ij}$ với $i \neq j$.
     Trên đường chéo của ma trận $L(G)$ là số bậc vào của từng đỉnh tương ứng trong đồ thị $G$, với $d_i$ tại phần tử $i, i$ là số bậc vào của đỉnh $v_i$.
     Vì vậy ma trận $L(G)$ của một đồ thị có hướng tổng quát $G$ với $n$ đỉnh có thể được viết dưới dạng như sau:
@@ -670,8 +670,8 @@
     \begin{equation}
         L (G / v_1 v_2) = \begin{pmatrix}
             d_1 - a_{21} + d_2 - a_{12} & - (a_{13} + a_{23}) & - (a_{14} + a_{24}) & \hdots & - (a_{1n} + a_{2n}) \\
-            - (a_{31} + a{32}) & d_3 & - a_{34} & \hdots & - a_{3n} \\
-            - (a_{41} + a{42}) & - a_{43} & d_4 & \thickspace & - a_{4n} \\
+            - (a_{31} + a_{32}) & d_3 & - a_{34} & \hdots & - a_{3n} \\
+            - (a_{41} + a_{42}) & - a_{43} & d_4 & \thickspace & - a_{4n} \\
             \vdots & \vdots & \thickspace & \ddots & \vdots \\
             - (a_{n1} + a_{n2}) & - a_{n3} & - a_{n4} & \hdots & d_n 
         \end{pmatrix}
@@ -687,7 +687,7 @@
 
     Ta đã thiết lập dạng của các ma trận cho từng đồ thị cụ thể và cách chúng liên quan đến nhau.
     Bây giờ ta sẽ tập trung vào phần phụ đại số  cho từng ma trận.
-    Để thuận lợi cho việc ký hiệu, ta sẽ xem xét phần phụ đài số dựa trên việc loại bỏ hàng và cột thứ nhất của từng ma trận Laplace tương ứng sẽ được gọi là $k_1$.
+    Để thuận lợi cho việc ký hiệu, ta sẽ xem xét phần phụ đại số dựa trên việc loại bỏ hàng và cột thứ nhất của từng ma trận Laplace tương ứng sẽ được gọi là $k_1$.
     Cụ thể, từng $k_1$ có thể được tạo ra bằng các công thức sau:
 
     \begin{equation}
@@ -761,7 +761,7 @@
     Vì vậy số cây khung trong một đồ thị có hướng Euler $G$ thực sự bằng với phần phụ đại số của ma trận Laplace của nó.
 
     Khi đã hoàn thành hai chứng minh và các công thức thu được từ từng chứng minh, ta có thể phát biểu như sau:
-    Cho một đồ thị de Bruijin $G$ được tạo từ một tập các đoạn DNA, xác suất để lắp ráp đúng chuỗi ban đâu là:
+    Cho một đồ thị de Bruijin $G$ được tạo từ một tập các đoạn DNA, xác suất để lắp ráp đúng chuỗi ban đầu là:
 
     \begin{equation}
         \dfrac{1}{\lvert t_i(G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!}
@@ -773,7 +773,7 @@
     Cho một đồ thị Euler $G$ với một tập các đường đi $P$ trong đồ thị, tìm một chu trình Euler trong đồ thị $G$ chứa tất cả các thành phần của $P$ là đường đi con.
 
     Ta đã nhấn mạnh ở phần trước của bài báo là kỹ thuật sử dụng lý thuyết đồ thị để lắp ráp các đoạn DNA được một số tác giả gọi là cách tiếp cận đường đi Euler.
-    Tuy nhiên, theo thuật ngữ mà ta sử dụng, một đường đi không lặp lại các cảnh hoặc các đỉnh nên không phải lúc nào cũng hoàn thành một hành trình Euler qua một đồ thị.
+    Tuy nhiên, theo thuật ngữ mà ta sử dụng, một đường đi không lặp lại các cạnh hoặc các đỉnh nên không phải lúc nào cũng hoàn thành một hành trình Euler qua một đồ thị.
     Vì vậy, trong phần còn lại của bài báo, cách tiếp cận này thực tế đề cập đến các vết Euler, ngược lại với các đường đi.
 
     Với dữ liệu không có lỗi và các đoạn DNA hoàn hảo, ta có thể tạo ra một đồ thị có hướng biểu diễn các đoạn từ chuỗi DNA.
@@ -784,8 +784,21 @@
     Các đoạn có độ dài từ 100 đến 300 nucleotide và khi cố tạo ra một đồ thị de Bruijin với 20 bộ sẽ tạo ra đồ thị với hàng triệu đỉnh và cạnh.
     Rõ ràng một đồ thị có tính chất này không dễ dàng làm việc.
 
-    
+    Trong hai bài báo \cite{pevzner2001eulerian}, \cite{pevzner2001new}, các tác giả đã nêu chi tiết một thư viện máy tính xử lý loại đồ thị này.
+    Chương trình này được gọi là EULER, làm việc với dữ liệu bị lỗi và không đầy đủ, đơn giản hóa dựa trên một chuỗi các phép cắt và tách rời trên đồ thị.
+    Các đoạn DNA ngẫu nhiên có độ dài khác nhau được biểu diễn là một đường đi được tìm thấy xuyên suốt đồ thị.
+    Các phép biến đổi này trên đồ thị trong EULER là các thành phần của những gì mà tác giả định nghĩa là bài toán (siêu) đường đi Euler.
+    Ta cần chú ý bài toán đường đi Euler ban đầu là một trường hợp đặc biệt của bài toán ESP, mà mỗi đường đi được biểu diễn bởi một cạnh.
 
+    Cách tiếp cận để giải quyết vấn đề này là dựa trên việc duy trì sự tương đương giữa đồ thị $G$ và hệ thống của các đường đi $P$ từ các một phép biến đổi này sang phép biến đổi tiếp theo.
+    Cụ thể hơn, biểu đồ kết quả và các đường đi sau phép biến đổi đầu tiên được gọi là $(G_1, P_1)$ tương đương với tập ban đầu $(G, P)$.
+    Vì vậy, mỗi khi phép biến đổi thứ $k$ cuối cùng được hoàn thành, tập kết quả $(G_k, P_k)$ là một biểu diễn gọn hơn nhiều của $(G, P)$.
+    Nó là tập cuối cùng ta biến đổi bài toán ESP thành một bài toán đường đi Euler, và các chu trình Euler ta tìm được với $(G_k, P_k)$ khớp với những chu trình Euler ta tìm được trong $(G, P)$.
+    Phép biến đổi đầu tiên được trình bày chi tiết trong \cite{pevzner2001eulerian}, \cite{pevzner2001new} là tách rời $x, y$ và phép biến đổi này có thể được thực hiện trong trường hợp không có nhiều cạnh trong đồ thị $G$ đã cho.
+    Ta cần chú ý ký hiệu của ta khác với ký hiệu tương ứng trong tài liệu tham khảo, vì ký hiệu này nhất quán với ký hiệu ta đã sử dụng xuyên suốt bài báo này.
+    Nếu ta có hai cạnh kề nhau $x_1 x_2$ và $x_2 x_3$ trong đồ thị $G$ và ba tập đường dẫn đầy đủ từ $P$, một trong số đó có cả hai cạnh liên tiếp, một tập kết thúc với $x_1 x_2$ và một bắt đầu với $x_2 x_3$, phép cắt này được thực hiện một cách phù hợp. Cụ thể, đỉnh nối với hai cạnh là $x_2$ bị kéo ra xa, tạo ra một cạnh mới $x_1 x_3$.
+    Phép biến đổi này loại bỏ một cạnh khỏi đồ thị và làm cho đỉnh $v_2$ có bậc thấp đi.
+    Đồ thị mới vẫn tương đương với đồ thị nhưng các phép toán được đơn giản hơn là kết quả của các phép biến đổi này.
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
 
