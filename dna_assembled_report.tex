@@ -808,7 +808,7 @@
     \end{figure}
 
     Hình \ref{fig:6} miêu tả chi tiết phép tách rời $x, y$ bằng cách sử dụng một phần của đồ thị de Bruijin đơn giản được xây dựng từ dữ liệu DNA.
-    Trong trường hợp ta có ba tập đầy đủ gồm nhiều mảnh khác nhau, một tập chứa các cạnh $ATG$ và $TGT$  liên tiếp a), một tập kết thúc với $ATG$, b) và một tập kết thúc với $TGT$, thì đỉnh $TG$ sẽ được kéo ra một cách an toàn và các cạnh $ATG$ và TGT sẽ trở thành một cạnh mới dài hơn, đại diện cho đoạn $ATGT$.
+    Trong trường hợp ta có ba tập đầy đủ gồm nhiều mảnh khác nhau, một tập chứa các cạnh $ATG$ và $TGT$  liên tiếp a), một tập kết thúc với $ATG$, b) và một tập bắt đầu với $TGT$, thì đỉnh $TG$ sẽ được kéo ra một cách an toàn và các cạnh $ATG$ và TGT sẽ trở thành một cạnh mới dài hơn, đại diện cho đoạn $ATGT$.
     Ta cần lưu ý đồ thị thu được có ít cạnh hơn và bậc của đỉnh $TG$ cũng bị giảm đi tương tự.
     Hơn nữa, bây giờ tất cả các đường đi chứa cả hai cạnh $ATG$ và $TGT$ chỉ chứa các cạnh $ATGT$, các đường dẫn kết thúc tại $ATG$ làm như vậy tại $ATGT$ và các đường dẫn bắt đầu với $TGT$ cũng tương tự.
 
@@ -832,8 +832,8 @@
     \end{figure}
 
     Một lần nữa, ta sẽ xem xét phép tách rời này sử dụng một phần đồ thị de Bruijin đơn giản với dữ liệu DNA trong hình \ref{fig:7}.
-    Vì có nhiều cạnh $ATG$, ta biết phân đoạn này phải lặp lại tại một số điểm trong toàn bộ chuỗi. Ở đây, ta có một tập hoàn chỉnh các đoạn DNA chứa một bản sao của $ATG$, theo sau là $TGT$ a) và một tập với đầu với $TGT$ c).
-    Trong ví dụ này, ta thấy không có đoạn nào kết thúc tại $ATG$, do đó tại sao không có môt tả về các đường dẫn b) trong hình ảnh.
+    Vì có nhiều cạnh $ATG$, ta biết phân đoạn này phải lặp lại tại một số điểm trong toàn bộ chuỗi. Ở đây, ta có một tập hoàn chỉnh các đoạn DNA chứa một bản sao của $ATG$, theo sau là $TGT$ a) và một tập bắt đầu với $TGT$ c).
+    Trong ví dụ này, ta thấy không có đoạn nào kết thúc tại $ATG$, do đó giải thích tại sao không có mô tả về các đường dẫn b) trong hình ảnh.
     Bây giờ, khi các điều kiện đã được đáp ứng, ta có thể tạo ra một cạnh $ATGT$ mới kết nối các đỉnh $AT$ và $GT$ để lại một bản sao của $ATG$.
     Giống như phép tách rời đầu tiên, phép này làm giảm số cạnh  trong đồ thị của ta và làm giảm bậc của đỉnh $TG$.
     Một lần nữa, ta cần lưu ý rằng tất cả các đường đi trong tập chứa $ATG$ và $TGT$ bây giờ chứa $ATGT$ và các đường đi từ tập bắt đầu với $TGT$ bây giờ sẽ bắt đầu với $ATGT$.
@@ -900,7 +900,46 @@
     Các thiết bị nanopore được sử dụng trong việc giải trình tự DNA với hy vọng cho phép đọc được toàn bộ các chuỗi DNA lớn và hoàn thiện.
     Những nanopores có kích thước đường kính vài nguyên tử và chỉ một chuỗi đơn DNA được đi qua bằng phương tiện quang hoặc hoặc điện.
     Thông qua chuỗi này, từng phần tử riêng lẻ của chuỗi được xác định, tạo ra một chuỗi $A, T, G$ và $C$ dài gần như vô tận.
+    
 
+    Bokhari và Sauer \cite{bokhari2005parallel} xác định và giải quyết các vấn đề phát sinh trong hình thức giải trình tự này, chúng rất giống với những vấn đề mà ta đã thấy trước đây.
+    Vấn đề đầu tiên nằm ở chỗ toàn bộ một sợi đơn lẻ hiếm khi đi xuyên qua được nanopore một cách nguyên vẹn.
+    Thay vào đó, các chuỗi con có độ dài khoảng 100000 cơ sở được tạo ra.
+    Hơn nữa, như đã thảo luận trước đây, vấn đề về phần bổ sung Watson-Crick trùng khớp gây ra những nhầm lẫn về việc liệu chuỗi ban đầu hoặc phần bổ sung trùng khớp của nó có được truyền qua nanopore hay không.
+    Tương tự, có một vấn đề khác liên quan đến xác định hướng của chuỗi đơn khi đi qua nanopore.
+    Khi đi qua và phân hủy thành các chuỗi con, hướng (3' - 5' hoặc 5' hoặc 3') của DNA bị mất.
+    Vấn đề cuối cùng là dữ liệu sai.
+    Không chỉ bản thân trình tự DNA có thể bị sai bởi các lần chèn, xóa, đột biến, lặp lại, các bản thân các nanopore cũng có thể tạo ra lỗi trong quá trình truyền một chuỗi DNA.
+
+    Khi xây dựng một thuật toán để loại bỏ sự khác biệt trùng khớp với những vấn đề trên, các tác sử dụng dụng các tiếp cận đường Euler và cung cấp các biến thể mới cho phép vẫn sử dụng được thành công với các chuỗi DNA dài và có lỗi.
+    Họ giải quyết vấn đề chuỗi bổ sung và hướng bằng cách xem tất cả bốn biến thể của các chuỗi con như là bốn đường đi khác nhau, tất cả đều được chứa trong đồ thị.
+
+    Cụ thể, đồ thị de Bruijin DNA $G$ phải bao gồm các đường đi $P_1, \dots, P_4$ sao cho hợp của bốn đường đi phải tương đương với $G$, ký hiệu $P_1 \cup P_2 \cup P_3 \cup P_4 = G$.
+    Hơn nữa, không có hai đường nào có bất kỳ sự tương đương trong các giao của chúng, vì $P_i \cap P_j = \empty \forall i, j$.
+    Tính chất này được Bokhri và Sauer \cite{bokhari2005parallel} gọi là $E_4$ và thuật toán này chứa một hàm $E_4(G)$ được đồng thuận  nếu đồ thị DNA $G$ duy trì các tính chất này.
+    Vì việc kiểm tra các đường đi này bằng một phép hoán vị sẽ xác định thêm liệu trên thực tế đó có phải là chuỗi bổ sung hoặc đảo ngược của nhau hay không.
+    Nếu điều này đúng, thì chuỗi đang được kiểm tra đến từ một chuỗi thực tế của dữ liệu DNA.
+
+    Thuật toán phân tích đồ thị này được thử nghiệm với Bokhari và Sauer \cite{bokhari2005parallel} trên bộ gen của Mycoplasma pneumoniae có độ dài 816394 cơ sở.
+    Khi giải trình tự bằng thiết bị nanopore, thuật toán này có thể tạo ra toàn bộ trình tự của bộ gen vi khuẩn này trong vòng chưa đầy một giờ.
+
+    \section{Kết luận}
+
+    Các khái niệm khác nhau từ lý thuyết đồ thị được sử dụng cho các ứng dụng trong nhiều lĩnh vực nghiên cứu khác nhau.
+    Trong bài báo này, ta đã trình bày cách đồ thị de Bruijin và chu trình Euler được sử dụng để giải quyết một số vấn đề trong giải tự và lắp ráp các đoạn DNA.
+    Hơn nữa, chính công thức bắt nguồn từ cả hai định lý BEST và định lý cây ma trận đã cho phép ta đi đến một công thức đếm số chu trình Euler trong đồ thị de Bruijin được xây dựng từ dữ liệu DNA.
+    Các chu trình như vậy cho biết xác suất xây dựng chuỗi DNA mong muốn dựa trên tập hợp các đoạn từ chuỗi đó.
+
+    Quá trình được thực hiện với bài toán siêu đường đi Euler và gói EULER cho thấy các nhà khoa học và các nhà nghiên cứu đang tiếp tục tìm kiếm cách giải quyết vấn đề phát trình trong quá trình lắp ráp các đoạn, đặc biệt là những vấn đề khi xử lý dữ liệu sai.
+    Hy vọng rằng các phép biến đổi này trên đồ thị Euler có hướng biểu diễn các bước đầu tiên trong số nhiều bước có thể được thực hiện để đơn giản hóa việc giải trình tự DNA cực kỳ phức tạp, vì nhiều vấn đề tương tự sẽ xuất hiện theo thời gian.
+    Hơn nữa, ta cần phải nhận ra rằng lĩnh vực tin sinh học đang thay đổi hàng ngày, như đã thấy trong phần trước.
+    Phần lớn sự phát triển này được thúc đẩy bởi các tiếng bộ công nghệ.
+    Ngoài các nguồn được thảo luận trong bài báo này, người đọc được khuyến khích xem xét các khía cạnh khác của tin sinh học có liên quan đến phương pháp này.
+    Điều này bao gồm nhưng chắc chắn không giới hạn trong các bài báo sau Alekseyev và Penzner \cite{alekseyev2007colored}, Myers \cite{myers2005fragment}, Raphael, Zhi, Tang, và Pevzner \cite{raphael2004novel}. 
+
+    Tiến bộ đã đạt được trong lĩnh vực này thông qua việc sử dụng các khái niệm trong lý thuyết đồ thị chỉ đơn giản là mở ra nhiều cơ hội hơn nữa.
+    Đặc biệt, vấn đề với các dòng dữ liệu DNA bị hỏng một phần có thể được đơn giản hóa thành các trường hợp khác nhau của một đồ thị và các đường đi chứa trong đồ thị đó.
+    Với các công cụ mà các trường hợp phức tạp hơn có thể được tiếp cận với hy vọng sẽ được giải quyết thành công.
 
     \newpage
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
