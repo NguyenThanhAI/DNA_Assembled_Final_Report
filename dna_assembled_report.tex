@@ -201,7 +201,7 @@
     Kết quả là, cấu hình của bộ gen ban đầu không hề dễ dàng như việc ghép mảnh này vào mảnh ghép tiếp theo.
 
     Ta sẽ thảo luận về các cách tiếp cận mới được khám phá gần đây để lắp ráp các đoạn DNA sử dụng các thành phần từ lý thuyết đồ thị,
-    bao gồm đồ thị de Bruijin và chu trình Euler để khắc phục các sai lệch trong quá trình lắp ráp các đoạn DNA.
+    bao gồm đồ thị de Bruijn và chu trình Euler để khắc phục các sai lệch trong quá trình lắp ráp các đoạn DNA.
     Cụ thể, cách tiếp cận này bắt nguồn từ các công trình giải trình tự bằng lai ghép, bao gồm xây dựng các đồ thị có hướng dựa trên dữ liệu DNA được cung cấp và đếm số chu trình Euler trong các đồ thị này.
 
     Bài báo này sẽ cung cấp một số thông tin cơ bản sơ bộ từ lý thuyết đồ thị.
@@ -233,8 +233,8 @@
     Các vết hoặc các chu trình Euler được cho phép đi qua các đỉnh trong đồ thị nhiều hơn một lần.
     Số chu trình Euler trong đồ thị có thể được tính toán với công thức từ định lý BEST, định lý này sẽ được chứng minh ở phần sau trong bài báo.
 
-    Một định nghĩa cuối cùng từ lĩnh vực lý thuyết đồ thị mà ta sử dụng trong bài báo là đồ thị de Bruijin.
-    Đồ thị de Bruijin là một đồ thị có hướng với các đỉnh biểu diễn các chuỗi ký tự từ bảng chữ cái và các cạnh cho biết vị trí mà chuỗi có thể chồng lên nhau như được định nghĩa trong \cite{de1946combinatorial}.
+    Một định nghĩa cuối cùng từ lĩnh vực lý thuyết đồ thị mà ta sử dụng trong bài báo là đồ thị de Bruijn.
+    Đồ thị de Bruijn là một đồ thị có hướng với các đỉnh biểu diễn các chuỗi ký tự từ bảng chữ cái và các cạnh cho biết vị trí mà chuỗi có thể chồng lên nhau như được định nghĩa trong \cite{de1946combinatorial}.
 
     Việc xây dựng đồ thị này phụ thuộc vào một tập các mảnh hoặc các đoạn có độ dài $l$ từ dãy cụ thể hiện có.
     Mỗi đỉnh được gán nhãn bởi một đoạn có chiều dài $l-1$ và cạnh có hướng tồn tại giữa hai đỉnh đại diện cho một trong đoạn có chiều dài $l$.
@@ -244,13 +244,13 @@
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.4\textwidth]{1.png}
-        \caption{Một đồ thị de Bruijin cho chuỗi "0110101" với các đoạn chiều dài là 3.}
+        \caption{Một đồ thị de Bruijn cho chuỗi "0110101" với các đoạn chiều dài là 3.}
         \label{fig:1}
     \end{figure}
 
-    Ví dụ, ta xây dựng một đồ thị de Bruijin cho chuỗi "0110101" sử dụng các đoạn có độ dài $l=3$.
+    Ví dụ, ta xây dựng một đồ thị de Bruijn cho chuỗi "0110101" sử dụng các đoạn có độ dài $l=3$.
     Bốn bộ ba có mặt trong chuỗi là 011, 110, 101 (xuất hiện hai lần) và 010.
-    Hình \ref{fig:1} cho thấy đồ thị de Bruijin trùng với chuỗi này.
+    Hình \ref{fig:1} cho thấy đồ thị de Bruijn trùng với chuỗi này.
     Ta cần lưu ý rằng các đỉnh đại diện cho chuỗi con đầu tiên và cuối cùng có độ dài là 2 trong mỗi bộ ba, và cạnh có hướng giữa hai đỉnh đại diện cho bộ ba tương ứng.
 
     \section{Giải trình tự và lắp ráp các đoạn DNA}
@@ -289,7 +289,7 @@
     Thành phần cuối cùng của thuật toán này là tìm ra cách các chuỗi sẽ xuất hiện dựa trên bố cục tạo ra ở bước trước.
     Cách tiếp cận ta sẽ thảo luận trong bài báo này bỏ qua phác thảo của quá trình ba bước ở trên và khi làm vậy, bài toán trở thành bài toán mang tính xác suất.
     
-    \section{So sánh chuỗi DNA với đồ thị de Bruijin}
+    \section{So sánh chuỗi DNA với đồ thị de Bruijn}
 
     Giải trình tự bằng lai ghép là một kỹ thuật trong phòng thí nghiệm gần giống như nhìn vào các đoạn của DNA,
     được gọi là mảng DNA, nhưng không nên nhầm lẫn với lắp ráp các đoạn DNA, vì chúng khác nhau.
@@ -298,17 +298,17 @@
 
     Tuy nhiên, chính cách tiếp cận lý thuyết đồ thị sử dụng SBH \cite{idury1995new} đã đề xuất cách tiếp cận tương tự trong lĩnh vực lắp ráp các đoạn DNA.
     Trong bài báo của mình, các tác giả đã định nghĩa các quy tắc để xây dựng một đồ thị có hướng dựa trên các đoạn DNA.
-    Cụ thể hơn, các quy tắc này là để xây dựng một đồ thị de Bruijin dựa trên các đoạn DNA có độ dài $k$.
+    Cụ thể hơn, các quy tắc này là để xây dựng một đồ thị de Bruijn dựa trên các đoạn DNA có độ dài $k$.
     Đồ thị có các đỉnh được gán nhãn bằng một đoạn có độ dài là $k-1$, các cạnh được gán nhãn bằng đoạn có độ dài $k$, kết nối hai đỉnh kề trong chuỗi.
 
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.6\textwidth]{2.png}
-        \caption{Một đồ thị de Bruijin cho chuỗi ATGTGCCGCA.}
+        \caption{Một đồ thị de Bruijn cho chuỗi ATGTGCCGCA.}
         \label{fig:2}
     \end{figure}
 
-    Hình \ref{fig:2} minh họa một đồ thị de Bruijin cho một chuỗi đơn giản ATGTGCCGCA, chuỗi này đã được sử dụng bởi \cite{idury1995new}.
+    Hình \ref{fig:2} minh họa một đồ thị de Bruijn cho một chuỗi đơn giản ATGTGCCGCA, chuỗi này đã được sử dụng bởi \cite{idury1995new}.
     Ở đây, các đoạn DNA đọc được có độ dài là 3.
     Vì vậy, các đỉnh được đánh dấu bằng các đoạn có độ dài là 2 và các cạnh được đánh dấu bằng các đoạn có độ dài là 3, biểu diễn cho các bộ ba thu được từ chuỗi ban đầu.
     Ta cần chú ý rằng trong đồ thị trên chỉ có duy nhất một vết Euler vì đây chỉ là một trường hợp đơn giản.
@@ -321,7 +321,7 @@
         \label{fig:3}
     \end{figure}
 
-    Bây giờ, ta sẽ xây dựng một đồ thị de Bruijin khác bằng cách sử dụng các quy tắc tương tự như trên.
+    Bây giờ, ta sẽ xây dựng một đồ thị de Bruijn khác bằng cách sử dụng các quy tắc tương tự như trên.
     Với tập hợp các đoạn $S = \lbrace ATG, TGG, TGC, GTG, GGC, GCA, GCG, CGT \rbrace$,
     đồ thị sẽ có các đỉnh được gán nhãn bởi các đoạn có độ dài là 2 và các cạnh được gán nhãn bởi các đoạn có độ dài là 3.
     Tuy nhiên, đồ thị được tạo ra cho tập hợp các đoạn đọc được này phức tạp hơn đồ thị trước đó.
@@ -336,7 +336,7 @@
     Tổng quát hơn, khi ta được cung cấp dữ liệu đầy đủ và không có lỗi, ta có thể thấy rằng xác suất tái tạo lại chuỗi DNA ban đầu với một tập hợp các đoạn là:
 
     \begin{equation}
-        \dfrac{1}{\text{tổng số chu trình/đường đi Euler trong đồ thị de Bruijin}}
+        \dfrac{1}{\text{tổng số chu trình/đường đi Euler trong đồ thị de Bruijn}}
     \end{equation}
 
     Cùng với đó, có một định lý được dùng để đếm số chu trình Euler trong đồ thị có hướng, được gọi là định lý BEST và ta sẽ chứng minh, tiếp theo là một định lý liên quan khác và chứng minh của định lý này.
@@ -344,11 +344,11 @@
     \section{Định lý BEST}
 
     Tồn tại một công thức tính số chu trình Euler trong đồ thị có hướng.
-    Được đặt tên theo những người tìm ra là de Bruijin, van Aardenne-Ehrenfest, Smith và Tutte \cite{van1951circuits}, \cite{tutte1941unicursal}.
+    Được đặt tên theo những người tìm ra là de Bruijn, van Aardenne-Ehrenfest, Smith và Tutte \cite{van1951circuits}, \cite{tutte1941unicursal}.
     Định lý BEST được phát biểu như sau:
 
     \begin{dl}
-        Cho một đồ thị có hướng liên thông $G$ và tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ tất cả đều có bậc chẵn, số chu trình Euler là $\lvert s(G) \rvert$ được tính theo công thức sau, với $\lvert t_i (G) \rvert$ là số cây khung hướng đến gốc là một đỉnh $v_i$ bất kỳ trong $G$:
+        Cho một đồ thị có hướng liên thông $G$ và tập các đỉnh $V(G)=\lbrace v_1, v_2, \dots, v_n \rbrace$ tất cả đều có bậc vào bằng bậc ra, số chu trình Euler là $\lvert s(G) \rvert$ được tính theo công thức sau, với $\lvert t_i (G) \rvert$ là số cây khung hướng đến gốc là một đỉnh $v_i$ bất kỳ trong $G$:
 
         \begin{equation*}
             \lvert s(G) \rvert = \lvert t_i (G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!
@@ -761,7 +761,7 @@
     Vì vậy số cây khung trong một đồ thị có hướng Euler $G$ thực sự bằng với phần phụ đại số của ma trận Laplace của nó.
 
     Khi đã hoàn thành hai chứng minh và các công thức thu được từ từng chứng minh, ta có thể phát biểu như sau:
-    Cho một đồ thị de Bruijin $G$ được tạo từ một tập các đoạn DNA, xác suất để lắp ráp đúng chuỗi ban đầu là:
+    Cho một đồ thị de Bruijn $G$ được tạo từ một tập các đoạn DNA, xác suất để lắp ráp đúng chuỗi ban đầu là:
 
     \begin{equation}
         \dfrac{1}{\lvert t_i(G) \rvert \prod_{j=1}^n \big( d^+ (v_j) - 1 \big)!}
@@ -781,7 +781,7 @@
     Ta tìm tổng số chu trình Euler trong một đồ thị như vậy được gọi là bài toán đường đi Euler.
 
     Tuy nhiên, trong trường hợp dữ liệu có nhiều lỗi và lặp lại, các đoạn có đồ dài khác nhau, một bài toán đường đi Euler trở nên khó khăn hơn rất nhiều.
-    Các đoạn có độ dài từ 100 đến 300 nucleotide và khi cố tạo ra một đồ thị de Bruijin với 20 bộ sẽ tạo ra đồ thị với hàng triệu đỉnh và cạnh.
+    Các đoạn có độ dài từ 100 đến 300 nucleotide và khi cố tạo ra một đồ thị de Bruijn với 20 bộ sẽ tạo ra đồ thị với hàng triệu đỉnh và cạnh.
     Rõ ràng một đồ thị có tính chất này không dễ dàng làm việc.
 
     Trong hai bài báo \cite{pevzner2001eulerian}, \cite{pevzner2001new}, các tác giả đã nêu chi tiết một thư viện máy tính xử lý loại đồ thị này.
@@ -807,7 +807,7 @@
         \label{fig:6}
     \end{figure}
 
-    Hình \ref{fig:6} miêu tả chi tiết phép tách rời $x, y$ bằng cách sử dụng một phần của đồ thị de Bruijin đơn giản được xây dựng từ dữ liệu DNA.
+    Hình \ref{fig:6} miêu tả chi tiết phép tách rời $x, y$ bằng cách sử dụng một phần của đồ thị de Bruijn đơn giản được xây dựng từ dữ liệu DNA.
     Trong trường hợp ta có ba tập đầy đủ gồm nhiều mảnh khác nhau, một tập chứa các cạnh $ATG$ và $TGT$  liên tiếp a), một tập kết thúc với $ATG$, b) và một tập bắt đầu với $TGT$, thì đỉnh $TG$ sẽ được kéo ra một cách an toàn và các cạnh $ATG$ và TGT sẽ trở thành một cạnh mới dài hơn, đại diện cho đoạn $ATGT$.
     Ta cần lưu ý đồ thị thu được có ít cạnh hơn và bậc của đỉnh $TG$ cũng bị giảm đi tương tự.
     Hơn nữa, bây giờ tất cả các đường đi chứa cả hai cạnh $ATG$ và $TGT$ chỉ chứa các cạnh $ATGT$, các đường dẫn kết thúc tại $ATG$ làm như vậy tại $ATGT$ và các đường dẫn bắt đầu với $TGT$ cũng tương tự.
@@ -831,7 +831,7 @@
         \label{fig:7}
     \end{figure}
 
-    Một lần nữa, ta sẽ xem xét phép tách rời này sử dụng một phần đồ thị de Bruijin đơn giản với dữ liệu DNA trong hình \ref{fig:7}.
+    Một lần nữa, ta sẽ xem xét phép tách rời này sử dụng một phần đồ thị de Bruijn đơn giản với dữ liệu DNA trong hình \ref{fig:7}.
     Vì có nhiều cạnh $ATG$, ta biết phân đoạn này phải lặp lại tại một số điểm trong toàn bộ chuỗi. Ở đây, ta có một tập hoàn chỉnh các đoạn DNA chứa một bản sao của $ATG$, theo sau là $TGT$ a) và một tập bắt đầu với $TGT$ c).
     Trong ví dụ này, ta thấy không có đoạn nào kết thúc tại $ATG$, do đó giải thích tại sao không có mô tả về các đường dẫn b) trong hình ảnh.
     Bây giờ, khi các điều kiện đã được đáp ứng, ta có thể tạo ra một cạnh $ATGT$ mới kết nối các đỉnh $AT$ và $GT$ để lại một bản sao của $ATG$.
@@ -849,8 +849,8 @@
     \end{figure}
 
 
-    Để hiểu cách ESP hoạt động với một đồ thị hoàn chỉnh, ta sẽ trình bày một ví dụ về phép tách rời trên một đồ thị de Bruijin hoàn chỉnh với dữ liệu DNA.
-    Ta xét đồ thị trong hình \ref{fig:8}, biểu diễn đồ thị de Bruijin DNA có hai chu trình Euler khả dĩ (với cạnh bổ sung kết nối đỉnh đầu tiên và đỉnh cuối cùng).
+    Để hiểu cách ESP hoạt động với một đồ thị hoàn chỉnh, ta sẽ trình bày một ví dụ về phép tách rời trên một đồ thị de Bruijn hoàn chỉnh với dữ liệu DNA.
+    Ta xét đồ thị trong hình \ref{fig:8}, biểu diễn đồ thị de Bruijn DNA có hai chu trình Euler khả dĩ (với cạnh bổ sung kết nối đỉnh đầu tiên và đỉnh cuối cùng).
     Nếu ta được cung cấp đồ thị này, một loạt các đoạn DNA với kích thước khác nhau, ta có thể sử dụng các đoạn khác nhau để xác định chu trình Euler nào đại diện cho trình tự thực tế.
 
     Giả sử ta có các đoạn sau: (1) $ATGG$, (2) $TGGCG$, (3) $GGCGTGG$ và (4) $CGTGCA$.
@@ -872,18 +872,18 @@
     Cụ thể, Pevzner, Tang và Waterman \cite{pevzner2001eulerian}, \cite{pevzner2001new} áp dụng các thành phần từ chương trình EULER của họ và đưa vào một dự án liên quan đến giải trình tự bộ gen Neisseria meningitidis [NM] được gọi là dự án NM.
     Trong suốt quá trình của hai bài báo này và hơn nữa trong Pevzner và Tang \cite{pevzner2001fragment}, các tác giả trình bày chi tiết tác động của những khái niệm này khi xử lý bộ gen vi khuẩn khá khó tái tạo.
 
-    Bộ gen NM, được tái tạo thành công mà không có lỗi, được biểu diễn trong đồ thị de Bruijin có 4039248 đỉnh, với mỗi đỉnh có độ dài 20.
+    Bộ gen NM, được tái tạo thành công mà không có lỗi, được biểu diễn trong đồ thị de Bruijn có 4039248 đỉnh, với mỗi đỉnh có độ dài 20.
     Tuy nhiên, việc xây dựng đồ thị dựa trên các đoạn DNA thực được cung cấp ban đầu chứa 9474411 đỉnh.
     Thực hiện theo quy trình sửa lỗi lặp lại và dữ liệu bị lỗi được cung cấp chi tiết bởi Pevzner, Tang và Waterman \cite{pevzner2001eulerian}, \cite{pevzner2001new}, con số này giảm đáng kể xuống còn 4081857 đỉnh.
     Như vậy, vẫn nhiều hơn khoảng bốn mươi nghìn đỉnh phân tách đồ thị với dữ liệu thực nghiệm so với đồ thị biểu diễn bộ gen thực tế.
 
     Sử dụng các khái niệm đằng sau ESP, đồ thị thực nghiệm của bộ gen NM có thể được đơn giản hóa.
     Cụ thể, trong 18026 trên 18962 cạnh có độ dài 21 trong đồ thị này được coi là có thể giải được dựa trên các phép phân tách và phân tích như trong bài báo.
-    Đồ thị de Bruijin thu được có 126 đoạn lặp lại, trong đố các cải tiến tiếp theo có thể được thực hiện như được chỉ ra bởi Pevzner và Tang trong \cite{pevzner2001fragment}.
+    Đồ thị de Bruijn thu được có 126 đoạn lặp lại, trong đố các cải tiến tiếp theo có thể được thực hiện như được chỉ ra bởi Pevzner và Tang trong \cite{pevzner2001fragment}.
     Ở công trình này, các tác giả giới thiệu các khái niệm xử lý với "dữ liêu hai nòng" và một thuật toán mới EULER-DB, làm giảm đáng kể các đoạn lặp lại cũng dựa trên những ý tưởng tương tự.
 
     Trong những năm gần đây, các tác giả khác đã tiếp tục có sự hiểu biết rõ hơn về ESP và cách sử dụng chúng.
-    Zheng, Shi và Zhow \cite{zheng2004parallel} đã sử dụng các khái niệm của bài toán cho phép họ tạo ra một thuật toán lưu trữ tất cả dữ liệu được tìm thấy trong một đồ thị DNA de Bruijin cụ thể.
+    Zheng, Shi và Zhow \cite{zheng2004parallel} đã sử dụng các khái niệm của bài toán cho phép họ tạo ra một thuật toán lưu trữ tất cả dữ liệu được tìm thấy trong một đồ thị DNA de Bruijn cụ thể.
     Điều này chứng tỏ rất quan trọng vì các đồ thị thường rất lớn, và kết quả là tốn cả thời gian và bộ nhớ.
 
     Ngoài ra, trong năm ngoái, Zheng, Leong và Tang \cite{zhengimproved} giải quyết "bài toán căn chỉnh quang phổ" được phát triển tương tự bởi Pevzner, Tang và Waterman \cite{pevzner2001eulerian}, \cite{pevzner2001new} cùng với EULER và ESP.
@@ -896,7 +896,7 @@
 
     Trong những năm gần đây, các khái niệm trong lý thuyết đồ thị đã được sử dụng để hỗ trợ các vấn đề xuất hiện trong lĩnh vực tin sinh học.
     Một trong số đó có thể được tìm thấy trong Bokhari và Sauer \cite{bokhari2005parallel}.
-    Trong công trình này, các tác giả sử dụng đồ thị de Bruijin biểu diễn dữ liệu DNA và cách tiếp cận đường đi Euler khi xác định thuật toán hỗ trợ quá trình giải trình tự DNA với nanopores.
+    Trong công trình này, các tác giả sử dụng đồ thị de Bruijn biểu diễn dữ liệu DNA và cách tiếp cận đường đi Euler khi xác định thuật toán hỗ trợ quá trình giải trình tự DNA với nanopores.
     Các thiết bị nanopore được sử dụng trong việc giải trình tự DNA với hy vọng cho phép đọc được toàn bộ các chuỗi DNA lớn và hoàn thiện.
     Những nanopores có kích thước đường kính vài nguyên tử và chỉ một chuỗi đơn DNA được đi qua bằng phương tiện quang hoặc hoặc điện.
     Thông qua chuỗi này, từng phần tử riêng lẻ của chuỗi được xác định, tạo ra một chuỗi $A, T, G$ và $C$ dài gần như vô tận.
@@ -914,7 +914,7 @@
     Khi xây dựng một thuật toán để loại bỏ sự khác biệt trùng khớp với những vấn đề trên, các tác sử dụng dụng các tiếp cận đường Euler và cung cấp các biến thể mới cho phép vẫn sử dụng được thành công với các chuỗi DNA dài và có lỗi.
     Họ giải quyết vấn đề chuỗi bổ sung và hướng bằng cách xem tất cả bốn biến thể của các chuỗi con như là bốn đường đi khác nhau, tất cả đều được chứa trong đồ thị.
 
-    Cụ thể, đồ thị de Bruijin DNA $G$ phải bao gồm các đường đi $P_1, \dots, P_4$ sao cho hợp của bốn đường đi phải tương đương với $G$, ký hiệu $P_1 \cup P_2 \cup P_3 \cup P_4 = G$.
+    Cụ thể, đồ thị de Bruijn DNA $G$ phải bao gồm các đường đi $P_1, \dots, P_4$ sao cho hợp của bốn đường đi phải tương đương với $G$, ký hiệu $P_1 \cup P_2 \cup P_3 \cup P_4 = G$.
     Hơn nữa, không có hai đường nào có bất kỳ sự tương đương trong các giao của chúng, vì $P_i \cap P_j = \empty \forall i, j$.
     Tính chất này được Bokhri và Sauer \cite{bokhari2005parallel} gọi là $E_4$ và thuật toán này chứa một hàm $E_4(G)$ được đồng thuận  nếu đồ thị DNA $G$ duy trì các tính chất này.
     Vì việc kiểm tra các đường đi này bằng một phép hoán vị sẽ xác định thêm liệu trên thực tế đó có phải là chuỗi bổ sung hoặc đảo ngược của nhau hay không.
@@ -926,8 +926,8 @@
     \section{Kết luận}
 
     Các khái niệm khác nhau từ lý thuyết đồ thị được sử dụng cho các ứng dụng trong nhiều lĩnh vực nghiên cứu khác nhau.
-    Trong bài báo này, ta đã trình bày cách đồ thị de Bruijin và chu trình Euler được sử dụng để giải quyết một số vấn đề trong giải tự và lắp ráp các đoạn DNA.
-    Hơn nữa, chính công thức bắt nguồn từ cả hai định lý BEST và định lý cây ma trận đã cho phép ta đi đến một công thức đếm số chu trình Euler trong đồ thị de Bruijin được xây dựng từ dữ liệu DNA.
+    Trong bài báo này, ta đã trình bày cách đồ thị de Bruijn và chu trình Euler được sử dụng để giải quyết một số vấn đề trong giải tự và lắp ráp các đoạn DNA.
+    Hơn nữa, chính công thức bắt nguồn từ cả hai định lý BEST và định lý cây ma trận đã cho phép ta đi đến một công thức đếm số chu trình Euler trong đồ thị de Bruijn được xây dựng từ dữ liệu DNA.
     Các chu trình như vậy cho biết xác suất xây dựng chuỗi DNA mong muốn dựa trên tập hợp các đoạn từ chuỗi đó.
 
     Quá trình được thực hiện với bài toán siêu đường đi Euler và gói EULER cho thấy các nhà khoa học và các nhà nghiên cứu đang tiếp tục tìm kiếm cách giải quyết vấn đề phát trình trong quá trình lắp ráp các đoạn, đặc biệt là những vấn đề khi xử lý dữ liệu sai.
