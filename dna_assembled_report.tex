@@ -211,7 +211,7 @@
     chẳng hạn các vấn đề phát sinh và cách chúng được giải quyết bằng lý thuyết đồ thị.
     Ta sẽ xem cách các đồ thị được xây dựng sử dụng dữ liệu DNA và cách mà các đồ thị này biểu diễn bài toán.
     Vấn đề chính mà ta quan tâm là bài toán đường đi Euler trong \cite{pevzner2001eulerian}, \cite{pevzner2001new}, đây là một nỗ lực gần đây để đơn giản hóa đồ thị DNA thông qua một chuỗi các phép biến đổi trên đồ thị.
-    Các phép biến đổi như vậy bao gồm các phép tách cạnh khác nhau cho các trường hợp có một và nhiều cạnh trong đồ thị Euler có hướng.
+    Các phép biến đổi như vậy bao gồm các phép tách cạnh khác nhau cho các trường hợp cạnh đơn và cạnh có bội số trong đồ thị Euler có hướng.
 
     Phần kết luận thảo luận sự phân tích của trình tự DNA với nanopores, như được trình bày chi tiết trong \cite{bokhari2005parallel} và vai trò của lý thuyết độ thị trong việc giải quyết các vấn đề nảy sinh.
     Đây là một ứng dụng gần đây hơn của lý thuyết đồ thị được đưa vào sử dụng trong lĩnh vực tinh sinh học.
@@ -794,7 +794,7 @@
     Cụ thể hơn, biểu đồ kết quả và các đường đi sau phép biến đổi đầu tiên được gọi là $(G_1, P_1)$ tương đương với tập ban đầu $(G, P)$.
     Vì vậy, mỗi khi phép biến đổi thứ $k$ cuối cùng được hoàn thành, tập kết quả $(G_k, P_k)$ là một biểu diễn gọn hơn nhiều của $(G, P)$.
     Nó là tập cuối cùng ta biến đổi bài toán ESP thành một bài toán đường đi Euler, và các chu trình Euler ta tìm được với $(G_k, P_k)$ khớp với những chu trình Euler ta tìm được trong $(G, P)$.
-    Phép biến đổi đầu tiên được trình bày chi tiết trong \cite{pevzner2001eulerian}, \cite{pevzner2001new} là tách rời $x, y$ và phép biến đổi này có thể được thực hiện trong trường hợp không có nhiều cạnh trong đồ thị $G$ đã cho.
+    Phép biến đổi đầu tiên được trình bày chi tiết trong \cite{pevzner2001eulerian}, \cite{pevzner2001new} là tách rời $x, y$ và phép biến đổi này có thể được thực hiện trong trường hợp cạnh không có bội số trong đồ thị $G$ đã cho.
     Ta cần chú ý ký hiệu của ta khác với ký hiệu tương ứng trong tài liệu tham khảo, vì ký hiệu này nhất quán với ký hiệu ta đã sử dụng xuyên suốt bài báo này.
     Nếu ta có hai cạnh kề nhau $x_1 x_2$ và $x_2 x_3$ trong đồ thị $G$ và ba tập đường dẫn đầy đủ từ $P$, một trong số đó có cả hai cạnh liên tiếp, một tập kết thúc với $x_1 x_2$ và một bắt đầu với $x_2 x_3$, phép cắt này được thực hiện một cách phù hợp. Cụ thể, đỉnh nối với hai cạnh là $x_2$ bị kéo ra xa, tạo ra một cạnh mới $x_1 x_3$.
     Phép biến đổi này loại bỏ một cạnh khỏi đồ thị và làm cho đỉnh $v_2$ có bậc thấp đi.
@@ -812,13 +812,13 @@
     Ta cần lưu ý đồ thị thu được có ít cạnh hơn và bậc của đỉnh $TG$ cũng bị giảm đi tương tự.
     Hơn nữa, bây giờ tất cả các đường đi chứa cả hai cạnh $ATG$ và $TGT$ chỉ chứa các cạnh $ATGT$, các đường dẫn kết thúc tại $ATG$ làm như vậy tại $ATGT$ và các đường dẫn bắt đầu với $TGT$ cũng tương tự.
 
-    Phép tách thứ hai miêu tả liên quan đến đồ thị $G$ chứa nhiều cạnh, được gọi là phép tách rời $x, y_1$.
-    Ở đây chúng ta có nhiều cạnh $x_1 x_2$ và các cạnh $x_2 x_3$ và $x_2 x_4$ nằm liên kề và theo sau một cách riêng biệt.
+    Phép tách thứ hai miêu tả liên quan đến đồ thị $G$ chứa cạnh có bội số, được gọi là phép tách rời $x, y_1$.
+    Ở đây chúng ta có cạnh có bội số $x_1 x_2$ và các cạnh $x_2 x_3$ và $x_2 x_4$ nằm liên kề và theo sau một cách riêng biệt.
     Ta biết rằng sẽ có một chu trình Euler đi qua các cạnh $x_1 x_2$ đúng hai lần, một lần đi qua $x_2 x_3$ và một lần đi qua $x_2 x_4$
 
     Giống như phép tách rời trước đó, phép tách rời $x, y_1$ tương tự phụ thuộc vào tập các đường dẫn hoàn chỉnh.
-    Tập đầu tiên là tất cả các đường dẫn chứa một bản sao của nhiều cạnh $x_1 x_2$ theo sau là $x_2 x_3$.
-    Tập thứ hai và thứ ba là những tập kết thúc với nhiều cạnh $x_1 x_2$ và những tập bắt đầu bằng cạnh $x_2 x_3$.
+    Tập đầu tiên là tất cả các đường dẫn chứa một bản sao của cạnh có bội số $x_1 x_2$ theo sau là $x_2 x_3$.
+    Tập thứ hai và thứ ba là những tập kết thúc với cạnh có bội số $x_1 x_2$ và những tập bắt đầu bằng cạnh $x_2 x_3$.
 
     Trường hợp này trở nên phức tạp hơn một chút, vì nó phụ thuộc vào việc có hay không đường đi thỏa mãn tập thứ hai.
     Cụ thể, nếu không có đường đi nào kết thúc trên $x_1 x_2$ thì ta có thể xóa một bản sao của $x_1 x_2$ một cách an toàn và tạo một cạnh mới $x_1 x_3$, điều này sẽ làm giảm thêm bậc của đỉnh $x_2$.
