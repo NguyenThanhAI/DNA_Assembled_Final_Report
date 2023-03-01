@@ -959,8 +959,11 @@
         IS\_EULERIAN()\;
         MERGE\_EQUAL\_MULTIPLICITIES\_EDGES()\;
         MERGE\_UNEQUAL\_MULTIPLICITIES\_EDGES()\;
-        IS\_EULERIAN()\;
-        FIND\_EULERIAN\_PATH()\;
+        \If{IS\_EULERIAN()} {
+            GET\_NUMBERS\_EULERIAN\_PATH()\;
+            FIND\_EULERIAN\_PATH()\;
+        }
+        
         \caption{MAIN}
     \end{algorithm}
 
@@ -1482,6 +1485,70 @@
     \begin{algorithm}[h!]
         \DontPrintSemicolon
         \KwIn{graph: \KwSty{Graph}, x: \KwSty{Edge}, y: \KwSty{Edge}}
+        min\_multiplicities: \KwSty{int} $\gets$ 0\;
+        read\_to\_consecutive\_positions: \KwSty{Dict[Read, List[int]]} $\gets \emptyset$\;
+        \ForEach{read $\in$ graph.read\_list}{
+            consecutive\_pos: \KwSty{List[int]} $\gets$ read.get\_consecutive\_positions(x=x, y=y)\;
+            \If{consecutive\_pos.length > 0} {
+                read\_to\_consecutive\_positions[read] $\gets$ consecutive\_pos\;
+            }
+        }
+        read\_to\_considered: \KwSty{Dict[Read, bool]} $\gets$ dict(zip(read\_to\_consecutive\_positions.keys(), [false] $\times$ read\_to\_consecutive\_positions.keys().length))\;
+        \ForEach{read $\in$ read\_to\_consecutive\_positions}{
+            considered\_reads $\gets$ filter(read: read\_to\_considered [read] is true)\;
+            \If{considered\_reads.length = 0} {
+                min\_multiplicities $\gets$ min\_multiplicities + read\_to\_consecutive\_positions[read].length\;
+            } \Else {
+                front\_of: \KwSty{List[Read]} $\gets \emptyset$\;
+                \ForEach{fread $\in$ read.front\_of}{
+                    \If{fread $\in$ considered\_reads} {
+                        front\_of.add(fread)\;
+                    }
+                }
+                behind\_of: \KwSty{List[Read]} $\gets \emptyset$\;
+                \ForEach{bread $\in$ read.behind\_of}{
+                    \If{bread $\in$ considered\_reads} {
+                        behind\_of.add(bread)\;
+                    }
+                }
+                positions: \KwSty{List[int]} $\gets$ read\_to\_consecutive\_positions[read]\;
+                \ForEach{pos $\in$ positions}{
+                    coincide: \KwSty{bool} $\gets$ false\;
+                    \ForEach{fread $\in$ front\_of}{
+                        over\_pos $\gets$ read.front\_of[fread]\;
+                        \If{pos $\geq$ over\_pos[0]} {
+                            \ForEach{fpos $\in$ read\_to\_consecutive\_positions[fread]}{
+                                \If{fpos < over\_pos[1]} {
+                                    coincide $\gets$ true\;
+                                }
+                            }
+                        }
+                    }
+                    \ForEach{bread $\in$ behind\_of}{
+                        over\_pos $\gets$ read.behind\_of[bread]\;
+                        \If{pos < over\_pos[1]} {
+                            \ForEach{bpos $\in$ read\_to\_consecutive\_positions[bread]}{
+                                \If{bpos $\geq$ over\_pos[0]} {
+                                    coincide $\gets$ true\;
+                                }
+                            }
+                        }
+                    }
+
+                    \If{!coincide} {
+                        min\_multiplicities $\gets$ min\_multiplicities + 1\;
+                    }
+                }
+            }
+            read\_to\_considered[read] $\gets$ true\;
+        }
+        \Return{min\_multiplicities}\;
+        \caption{GET\_ACTUAL\_MERGED\_MULTIPLICITIES}  
+    \end{algorithm}
+
+    \begin{algorithm}[h!]
+        \DontPrintSemicolon
+        \KwIn{graph: \KwSty{Graph}, x: \KwSty{Edge}, y: \KwSty{Edge}}
         in\_vertex: \KwSty{Vertex} $\gets$ x.in\_vertex\;
         mid\_vertex: \KwSty{Vertex} $\gets$ x.out\_vertex\;
         out\_vertex: \KwSty{Vertex} $\gets$ y.out\_vertex\;
@@ -1504,7 +1571,8 @@
         } \Else{
             z: \KwSty{Edge} $\gets$ new\_edge(in\_vertex=in\_vertex, out\_vertex=out\_vertex, sequence=seq)\;
         }
-        min\_multiplicities $\gets$ $\min$(x.multiplicities, y.multiplicities)\;
+        %min\_multiplicities $\gets$ $\min$(x.multiplicities, y.multiplicities)\;
+        min\_multiplicities $\gets$ graph.get\_actual\_merged\_multiplicities(x=x, y=y)\;
         z.multiplicities $\gets$ min\_multiplicities\;
         
         x.multiplicities $\gets$ x.multiplicities - min\_multiplicities\;
@@ -1575,5 +1643,56 @@
             graph.edge\_list.remove(edge)\;
         }
         \caption{CLEAN}
+    \end{algorithm}
+
+    \begin{algorithm}[h!]
+        \DontPrintSemicolon
+        \KwIn{graph: \KwSty{Graph}}
+        vertex\_list: \KwSty{List[Vertex]} $\gets$ graph.vertex\_list\;
+        vert\_to\_index: \KwSty{Dict[Vertex, int]} $\gets$ dict(zip(vertex\_list, range(vertex\_list.length)))\;
+        adjacent\_matrix: \KwSty{Matrix} $\gets$ zeros(vertex\_list.length, vertex\_list.length)\;
+        diagonal\_matrix: \KwSty{Matrix} $\gets$ zeros(vertex\_list.length, vertex\_list.length)\;
+
+        start\_vertex: \KwSty{Vertex} $\gets$ null\;
+        end\_vertex: \KwSty{Vertex} $\gets$ null\;
+
+        \ForEach{vertex $\in$ vertex\_list}{
+            \If{vertex.compute\_degree() = 1} {
+                start\_vertex $\gets$ vertex\;
+            }
+
+            \If{vertex.compute\_degree() = -1} {
+                end\_vertex $\gets$ vertex\;
+            }
+
+            out\_edges $\gets$ vertex.out\_edges\;
+            \ForEach{edge $\in$ out\_edges} {
+                out\_vertex $\gets$ edge.out\_vertex\;
+                adjacent\_matrix[vertex\_to\_index[vertex], vertex\_to\_index[out\_vertex]] $\gets$ adjacent\_matrix[vertex\_to\_index[vertex], vertex\_to\_index[out\_vertex]] + edge.multiplicities\;
+            }
+
+            in\_edges $\gets$ vertex.in\_edges\;
+            \ForEach{edge $\in$ in\_edges}{
+                diagonal\_matrix[vertex\_to\_index[vertex], vertex\_to\_index[vertex]] $\gets$
+            }
+        }
+        
+        adjacent\_matrix[vertex\_to\_index[end\_vertex], vertex\_to\_index[start\_vertex]] $\gets$ adjacent\_matrix[vertex\_to\_index[end\_vertex], vertex\_to\_index[start\_vertex]] + 1\;
+        diagonal\_matrix[vertex\_to\_index[start\_vertex], vertex\_to\_index[start\_vertex]] $\gets$ diagonal\_matrix[vertex\_to\_index[start\_vertex], vertex\_to\_index[start\_vertex]] + 1\;
+
+        laplacian\_matrix: \KwSty{Matrix} $\gets$ diagonal\_matrix - adjacent\_matrix\;
+
+        $t_i$ $\gets$ $\det$(laplacian\_matrix[1:, 1:])\;
+
+        cumulative\_out\_degree: \KwSty{int} $\gets$ 1\;
+        \ForEach{vertex $\in$ vertex\_list}{
+            \If{vertex = end\_vertex} {
+                cumulative\_out\_degree $\gets$ cumulative\_out\_degree $\times$ (vertex.compute\_out\_degree())!\;
+                continue\;
+            }
+            cumulative\_out\_degree $\gets$ cumulative\_out\_degree $\times$ (vertex.compute\_out\_degree() - 1)!\;
+        }
+        \Return{$\lvert t_i \rvert \times$ cumulative\_out\_degree}\;
+        \caption{GET\_NUMBERS\_EULERIAN\_PATH}
     \end{algorithm}
 \end{document}
